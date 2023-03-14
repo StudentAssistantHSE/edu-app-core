@@ -1,6 +1,6 @@
 name: lint_rules
 version: 0.0.1
-description: Lint rules
+description: Linr rules
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
