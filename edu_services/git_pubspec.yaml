@@ -10,23 +10,23 @@ environment:
 
 dependencies:
   dio: 4.0.6
-  drift: 2.5.0
 
   edu_core:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: edu_core
       ref: v0.0.1
+  edu_models:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: edu_models
+      ref: v0.0.1
 
   equatable: 2.0.5
   flutter:
     sdk: flutter
   flutter_secure_storage: 5.0.2
-  geolocator: 9.0.1
   injectable: 2.1.0
-  json_annotation: 4.8.0
-  path: 1.8.2
-  path_provider: 2.0.12
   shared_preferences: 2.0.15
   sqlite3_flutter_libs: 0.5.12
 

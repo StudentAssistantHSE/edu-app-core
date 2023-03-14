@@ -20,8 +20,6 @@ dependencies:
       path: edu_services
       ref: v0.0.1
 
-  json_annotation: 4.8.0
-
 dev_dependencies:
   build_runner: 2.3.3
   dependency_validator: 3.2.2
