@@ -1,0 +1,6 @@
+arb-dir: lib/src
+template-arb-file: app_en.arb
+synthetic-package: false
+output-dir: lib/src/generated
+output-localization-file: S.dart
+output-class: S

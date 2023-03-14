@@ -1,0 +1,19 @@
+name: tools
+description: Tools for automation of work processes
+version: 0.0.1
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  git: 2.2.0
+  path: 1.8.2
+
+dev_dependencies:
+  dependency_validator: 3.2.2
+  lint_rules:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: lint_rules
+      ref: v0.0.1

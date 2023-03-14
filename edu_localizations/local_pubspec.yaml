@@ -1,0 +1,21 @@
+name: edu_localizations
+description: Edulocalizations
+
+publish_to: 'none'
+
+version: 0.0.1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: 0.17.0
+
+dev_dependencies:
+  dependency_validator: 3.2.2
+  lint_rules:
+    path: ../lint_rules

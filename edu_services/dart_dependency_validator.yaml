@@ -1,0 +1,3 @@
+allow_pins: true
+ignore:
+  - sqlite3_flutter_libs
