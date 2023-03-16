@@ -57,6 +57,7 @@ abstract class EduThemes {
     ),
 
     appBarTheme: const AppBarTheme(
+      centerTitle: true,
       backgroundColor: EduColors.white,
       foregroundColor: EduColors.blue,
       surfaceTintColor: Colors.transparent,

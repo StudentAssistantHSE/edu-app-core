@@ -10,15 +10,9 @@ environment:
 
 dependencies:
   edu_core:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_core
-      ref: v0.0.1
+    path: ../../edu_core
   edu_services:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_services
-      ref: v0.0.1
+    path: ../../edu_services
 
   equatable: 2.0.5
   flutter_bloc: 8.1.1
@@ -26,7 +20,4 @@ dependencies:
 dev_dependencies:
   dependency_validator: 3.2.2
   lint_rules:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: lint_rules
-      ref: v0.0.1
+    path: ../../lint_rules

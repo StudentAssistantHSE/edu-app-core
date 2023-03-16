@@ -34,12 +34,12 @@ class ModelsListProviderRepository<T extends BaseModel> {
     );
 
     if (response.isSuccess) {
-      final result = ModelsListProviderResult<T>(
+      final data = (response.requireData[path.asKey] as List<Object?>).map((e) => _fromJson(e as Map<String, dynamic>)).toList();
+      return ModelsListProviderResult<T>(
         resultType: ModelsListProviderResultType.success,
-        models: (response.requireData[path.asKey] as List<Object?>).map((e) => _fromJson(e as Map<String, dynamic>)).toList(),
-        count: response.requireData['count'] as int,
+        models: data,
+        count: (response.requireData['count'] as int?) ?? data.length,
       );
-      return result;
     }
 
     return ModelsListProviderResult<T>(resultType: ModelsListProviderResultType.notAuthorized);

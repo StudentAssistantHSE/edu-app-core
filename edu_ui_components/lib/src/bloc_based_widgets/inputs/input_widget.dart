@@ -50,6 +50,9 @@ class InputWidget<T extends Bloc<Event, State>, Event, State> extends StatelessW
         autofocus: settings.autofocus,
         obscure: settings.obscure,
         withDelay: settings.withDelay,
+        maxLines: settings.maxLines,
+        expands: settings.expands,
+        textAlignVertical: settings.textAlignVertical,
 
         initialValue: controller.initialValue(state),
         onChanged: inputState.enabled ? _callbackBuilder(context, controller.onChangedEventBuilder) : null,

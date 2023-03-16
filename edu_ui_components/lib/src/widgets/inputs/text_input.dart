@@ -38,6 +38,9 @@ class TextInput extends StatefulWidget {
   final bool? isValid;
   final bool obscure;
   final bool withDelay;
+  final int? maxLines;
+  final bool expands;
+  final TextAlignVertical? textAlignVertical;
 
   const TextInput({
     this.enabled = true,
@@ -58,6 +61,9 @@ class TextInput extends StatefulWidget {
     this.isValid,
     this.obscure = false,
     this.withDelay = false,
+    this.maxLines = 1,
+    this.expands = false,
+    this.textAlignVertical,
     Key? key,
   }) : super(key: key);
 
@@ -186,6 +192,9 @@ class _TextInputState extends State<TextInput> {
       autocorrect: widget.autocorrect,
       autofillHints: widget.enabled ? widget.autofillHints : null,
       onSubmitted: widget.onSubmitted,
+      maxLines: widget.maxLines,
+      expands: widget.expands,
+      textAlignVertical: widget.textAlignVertical,
     );
   }
 

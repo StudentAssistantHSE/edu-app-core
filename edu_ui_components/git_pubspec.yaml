@@ -19,6 +19,11 @@ dependencies:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: edu_localizations
       ref: v0.0.1
+  edu_models:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: edu_models
+      ref: v0.0.1
 
   equatable: 2.0.5
   extended_image: 6.3.4

@@ -5,4 +5,5 @@ export 'curtain/curtain.dart';
 export 'images/images.dart';
 export 'indicators/indicators.dart';
 export 'inputs/inputs.dart';
+export 'projects/projects.dart';
 export 'shared_routes/shared_routes.dart';

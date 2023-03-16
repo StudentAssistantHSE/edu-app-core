@@ -1,5 +1,5 @@
-name: feature_registration
-description: Registration feature
+name: feature_apply_project
+description: Apply project feature
 
 publish_to: 'none'
 
@@ -13,6 +13,8 @@ dependencies:
 
   edu_core:
     path: ../../edu_core
+  edu_models:
+    path: ../../edu_models
   edu_repositories:
     path: ../../edu_repositories
 
@@ -21,8 +23,6 @@ dependencies:
   formz: 0.4.1
 
 dev_dependencies:
-  build_runner: 2.3.3
   dependency_validator: 3.2.2
-  json_serializable: 6.6.1
   lint_rules:
     path: ../../lint_rules

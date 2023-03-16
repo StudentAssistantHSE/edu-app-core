@@ -27,8 +27,8 @@ class NetworkRepository {
   }) async {
     final token = _token;
     final headers = <String, String> {
-      if (token != null && token.isEmpty)
-      HttpHeaders.authorizationHeader: 'Bearer $token',
+      if (token != null && token.isNotEmpty)
+        HttpHeaders.authorizationHeader: 'Bearer $token',
     };
 
     final response = await _apiNetworkService.send(

@@ -120,7 +120,14 @@ class ApiNetworkRequest extends NetworkRequest<Map<String, dynamic>> {
     String? errorMessage;
     if (response.data != null) {
       try {
-        data = jsonDecode(utf8.decode(response.data!)) as Map<String, dynamic>;
+        final decodedData = jsonDecode(utf8.decode(response.data!)) as Object?;
+        if (decodedData is List<dynamic>) {
+          data = <String, dynamic> {
+            'list_to_map': decodedData,
+          };
+        } else {
+          data = decodedData as Map<String, dynamic>;
+        }
         final statusCode = response.statusCode;
         final isSuccess = statusCode != null && (statusCode ~/ 100 == 2 || statusCode == 304);
         if (data.containsKey('message') && !isSuccess) {

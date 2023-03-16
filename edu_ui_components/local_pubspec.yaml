@@ -13,6 +13,8 @@ dependencies:
     path: ../edu_core
   edu_localizations:
     path: ../edu_localizations
+  edu_models:
+    path: ../edu_models
 
   equatable: 2.0.5
   extended_image: 6.3.4

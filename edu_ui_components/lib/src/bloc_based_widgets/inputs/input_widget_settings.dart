@@ -12,8 +12,11 @@ abstract class InputWidgetSettings {
   List<TextInputFormatterInterface>? get inputFormatters => null;
   TextInputType? get keyboardType => null;
   int? get maxLength => null;
+  int? get maxLines => 1;
   bool get obscure => false;
   bool get withDelay => false;
+  bool get expands => false;
+  TextAlignVertical? get textAlignVertical => null;
 
   const InputWidgetSettings({
     required this.textInputAction,

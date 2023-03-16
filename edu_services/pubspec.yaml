@@ -12,15 +12,9 @@ dependencies:
   dio: 4.0.6
 
   edu_core:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_core
-      ref: v0.0.1
+    path: ../edu_core
   edu_models:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_models
-      ref: v0.0.1
+    path: ../edu_models
 
   equatable: 2.0.5
   flutter:
@@ -35,7 +29,4 @@ dev_dependencies:
   dependency_validator: 3.2.2
   drift_dev: 2.5.2
   lint_rules:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: lint_rules
-      ref: v0.0.1
+    path: ../lint_rules

@@ -6,66 +6,15 @@
   "login_login_submitLoginButtonText": "Sign in",
   "login_login_pageTitle": "Signing in",
   "login_login_registrationButtonText": "Sign up",
-  "login_login_passwordRecoveryButtonText": "Forgot password?",
   "login_login_incorrectCredentialsMessage": "Incorrect credentials",
-  "login_login_accountDisabledMessage": "Your account was disabled. Please contact out support team",
-  "login_login_noPrivilegesMessage": "You don't have the necessary permissions",
   "login_login_connectionErrorMessage": "Connection error",
   "login_login_undefinedErrorMessage": "Something went wrong",
-
-  "login_emailCode_pageTitle": "Signing in",
-  "login_emailCode_pageSubtitle": "Enter the code that we have sent to your e-mail",
-  "login_emailCode_attemptsLeftMessage": "{current,plural, =1{1 attempt left} few{{current}/{max} attempts left} many{{current}/{max} attempts left} other{{current}/{max} attempts left}}",
-  "@login_emailCode_attemptsLeftMessage": {
-    "placeholders": {
-      "current": {
-        "type": "int"
-      },
-      "max": {
-        "type": "int"
-      }
-    }
-  },
-  "login_emailCode_invalidCodeMessage": "Invalid code",
-  "login_emailCode_noCodeMessage": "Attempts ended. Request a new code",
-  "login_emailCode_goToEmailButtonText": "Go to e-mail app",
-  "login_emailCode_pasteCodeDialogTitle": "Insert code",
-  "login_emailCode_pasteCodeDialogContent": "Insert code",
-  "login_emailCode_pasteCodeDialogAffirmativeActionText": "Yes",
-  "login_emailCode_pasteCodeDialogNegativeActionText": "No",
-  "login_emailCode_chooseEmailAppToGoDialogTitle": "Choose app",
-  "login_emailCode_resendCodeButtonText": "Send again",
-  "login_emailCode_failedToResendCodeMessage": "Failed to send code",
-  "login_emailCode_successfullyResentCodeMessage": "Code was successfully sent",
-  "login_emailCode_connectionErrorMessage": "Connection error",
-  "login_emailCode_undefinedErrorMessage": "Something went wrong",
 
   "registration_registration_pageTitle": "Sign up",
   "registration_registration_emailInputHint": "E-mail",
   "registration_registration_usernameInputHint": "Username",
-  "registration_registration_emailAlreadyUsedMessage": "Unavailable E-mail",
-  "registration_registration_usernameAlreadyUsedMessage": "Unavailable username",
-  "registration_registration_birthdayYearInputHint": "Birthday year",
-  "registration_registration_genderInputHint": "Gender",
   "registration_registration_passwordInputHint": "Password",
   "registration_registration_repeatPasswordInputHint": "Repeat password",
-  "registration_registration_usernameAllowedSymbolsDialogTitle": "Username",
-  "registration_registration_usernameRequiredFromToSymbols": "From {from} to {to} symbols",
-  "@registration_registration_usernameRequiredFromToSymbols": {
-    "placeholders": {
-      "from": {
-        "type": "int"
-      },
-      "to": {
-        "type": "int"
-      }
-    }
-  },
-  "registration_registration_usernameAllowedSymbolsDialogLowercaseLatinLettersItem": "Lowercase latin letters a-z",
-  "registration_registration_usernameAllowedSymbolsDialogDigitsItem": "Digits",
-  "registration_registration_usernameAllowedSymbolsDialogSpecialSymbolsItem": "Symbols \".\", \"_\"",
-  "registration_registration_usernameAllowedSymbolsDialogActionText": "OK",
-  "registration_registration_nextStepButtonText": "Next",
   "registration_registration_passwordRequiredSymbolsDialogTitle": "Password",
   "registration_registration_passwordRequiredFromToSymbols": "From {from} to {to} symbols",
   "@registration_registration_passwordRequiredFromToSymbols": {
@@ -84,384 +33,40 @@
   "registration_registration_passwordRequiredSymbolsDialogActionText": "OK",
   "registration_registration_submitRegistrationButtonText": "Sign up",
   "registration_registration_noRepeatedPasswordMatchMessage": "Passwords don't match",
-  "registration_registration_filledIncorrectMessage": "Fields are filled in incorrectly",
   "registration_registration_connectionErrorMessage": "Connection error",
   "registration_registration_undefinedErrorMessage": "Something went wrong",
-
-  "registration_emailCode_pageTitle": "Just a little bit left",
-  "registration_emailCode_pageSubtitle": "Enter the code that we have sent to your e-mail",
-  "registration_emailCode_attemptsLeftMessage": "{current,plural, =1{1 attempt left} few{{current}/{max} attempts left} many{{current}/{max} attempts left} other{{current}/{max} attempts left}}",
-  "@registration_emailCode_attemptsLeftMessage": {
-    "placeholders": {
-      "current": {
-        "type": "int"
-      },
-      "max": {
-        "type": "int"
-      }
-    }
-  },
-  "registration_emailCode_invalidCodeMessage": "Invalid code",
-  "registration_emailCode_noCodeMessage": "Attempts ended. Request a new code",
-  "registration_emailCode_goToEmailButtonText": "Go to e-mail app",
-  "registration_emailCode_pasteCodeDialogTitle": "Insert code",
-  "registration_emailCode_pasteCodeDialogContent": "Insert code",
-  "registration_emailCode_pasteCodeDialogAffirmativeActionText": "Yes",
-  "registration_emailCode_pasteCodeDialogNegativeActionText": "No",
-  "registration_emailCode_chooseEmailAppToGoDialogTitle": "Choose app",
-  "registration_emailCode_resendCodeButtonText": "Send again",
-  "registration_emailCode_failedToResendCodeMessage": "Failed to send code",
-  "registration_emailCode_successfullyResentCodeMessage": "Code was successfully sent",
-  "registration_emailCode_connectionErrorMessage": "Connection error",
-  "registration_emailCode_undefinedErrorMessage": "Something went wrong",
 
   "registration_finishRegistration_pageTitle": "Congratulations!",
   "registration_finishRegistration_pageSubtitle": "You have successfully signed up",
   "registration_finishRegistration_startButtonText": "Let's start",
 
-  "passwordRecovery_passwordRecovery_pageTitle": "Password recovery",
-  "passwordRecovery_passwordRecovery_emailOrUsernameInputHint": "E-mail / username",
-  "passwordRecovery_passwordRecovery_passwordInputHint": "New password",
-  "passwordRecovery_passwordRecovery_repeatPasswordInputHint": "Repeat password",
-  "passwordRecovery_passwordRecovery_submitRecoverButtonText": "Recover",
-  "passwordRecovery_passwordRecovery_passwordRequiredSymbolsDialogTitle": "Password",
-  "passwordRecovery_passwordRecovery_passwordRequiredFromToSymbols": "From {from} to {to} symbols",
-  "@passwordRecovery_passwordRecovery_passwordRequiredFromToSymbols": {
-    "placeholders": {
-      "from": {
-        "type": "int"
-      },
-      "to": {
-        "type": "int"
-      }
-    }
-  },
-  "passwordRecovery_passwordRecovery_passwordRequiredSymbolsDialogLowercaseLatinLettersItem": "At least one lowercase latin letter a-z",
-  "passwordRecovery_passwordRecovery_passwordRequiredSymbolsDialogUppercaseLatinLettersItem": "At least one lowercase Latin letter A-Z",
-  "passwordRecovery_passwordRecovery_passwordRequiredSymbolsDialogDigitsItem": "At least one digit",
-  "passwordRecovery_passwordRecovery_passwordRequiredSymbolsDialogActionText": "OK",
-  "passwordRecovery_passwordRecovery_noRepeatedPasswordMatchMessage": "Passwords don't match",
-  "passwordRecovery_passwordRecovery_connectionErrorMessage": "Connection error",
-  "passwordRecovery_passwordRecovery_undefinedErrorMessage": "Something went wrong",
-
-  "passwordRecovery_emailCode_pageTitle": "Password recovery",
-  "passwordRecovery_emailCode_pageSubtitle": "Enter the code that we have sent to your e-mail",
-  "passwordRecovery_emailCode_attemptsLeftMessage": "{current,plural, =1{1 attempt left} few{{current}/{max} attempts left} many{{current}/{max} attempts left} other{{current}/{max} attempts left}}",
-  "@passwordRecovery_emailCode_attemptsLeftMessage": {
-    "placeholders": {
-      "current": {
-        "type": "int"
-      },
-      "max": {
-        "type": "int"
-      }
-    }
-  },
-  "passwordRecovery_emailCode_invalidCodeMessage": "Invalid code",
-  "passwordRecovery_emailCode_noCodeMessage": "Attempts ended. Request a new code",
-  "passwordRecovery_emailCode_goToEmailButtonText": "Go to e-mail app",
-  "passwordRecovery_emailCode_pasteCodeDialogTitle": "Insert code",
-  "passwordRecovery_emailCode_pasteCodeDialogContent": "Insert code",
-  "passwordRecovery_emailCode_pasteCodeDialogAffirmativeActionText": "Yes",
-  "passwordRecovery_emailCode_pasteCodeDialogNegativeActionText": "No",
-  "passwordRecovery_emailCode_chooseEmailAppToGoDialogTitle": "Choose app",
-  "passwordRecovery_emailCode_resendCodeButtonText": "Send again",
-  "passwordRecovery_emailCode_failedToResendCodeMessage": "Failed to send code",
-  "passwordRecovery_emailCode_successfullyResentCodeMessage": "Code was successfully sent",
-  "passwordRecovery_emailCode_connectionErrorMessage": "Connection error",
-  "passwordRecovery_emailCode_undefinedErrorMessage": "Something went wrong",
-
-  "root_bottomNavigationBar_feedLabel": "Feed",
   "root_bottomNavigationBar_searchLabel": "Search",
-  "root_bottomNavigationBar_homeLabel": "Home",
-  "root_bottomNavigationBar_catalogLabel": "Catalog",
+  "root_bottomNavigationBar_myProjectsLabel": "My projects",
+  "root_bottomNavigationBar_applicationsLabel": "Applications",
   "root_bottomNavigationBar_userLabel": "Profile",
 
-  "root_home_curtainHeaderTemperatureCelsiusText": "{temperature} °C",
-  "@root_home_curtainHeaderTemperatureCelsiusText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainHeaderTemperatureFahrenheitText": "{temperature} °F",
-  "@root_home_curtainHeaderTemperatureFahrenheitText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateJanuary": "January {day}",
-  "@root_home_curtainHeaderDateJanuary": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateFebruary": "February {day}",
-  "@root_home_curtainHeaderDateFebruary": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateMarch": "March {day}",
-  "@root_home_curtainHeaderDateMarch": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateApril": "April {day}",
-  "@root_home_curtainHeaderDateApril": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateMay": "May {day}",
-  "@root_home_curtainHeaderDateMay": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateJune": "June {day}",
-  "@root_home_curtainHeaderDateJune": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateJuly": "July {day}",
-  "@root_home_curtainHeaderDateJuly": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateAugust": "August {day}",
-  "@root_home_curtainHeaderDateAugust": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateSeptember": "September {day}",
-  "@root_home_curtainHeaderDateSeptember": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateOctober": "October {day}",
-  "@root_home_curtainHeaderDateOctober": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateNovember": "November {day}",
-  "@root_home_curtainHeaderDateNovember": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainHeaderDateDecember": "December {day}",
-  "@root_home_curtainHeaderDateDecember": {
-    "placeholders": {
-      "day": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentTitle": "Today",
-  "root_home_curtainContentTemperatureCelsiusText": "{temperature}°C",
-  "@root_home_curtainContentTemperatureCelsiusText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentTemperatureFahrenheitText": "{temperature}°F",
-  "@root_home_curtainContentTemperatureFahrenheitText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentFeelsLikeTemperatureCelsiusText": "Feels like {temperature}°C",
-  "@root_home_curtainContentFeelsLikeTemperatureCelsiusText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentFeelsLikeTemperatureFahrenheitText": "Feels like {temperature}°F",
-  "@root_home_curtainContentFeelsLikeTemperatureFahrenheitText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentPrecipitationsTitle": "Precipitations",
-  "root_home_curtainContentPrecipitationsValueMetricText": "{precipitations} mm",
-  "@root_home_curtainContentPrecipitationsValueMetricText": {
-    "placeholders": {
-      "precipitations": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentPrecipitationsValueImperialText": "{precipitations} in",
-  "@root_home_curtainContentPrecipitationsValueImperialText": {
-    "placeholders": {
-      "precipitations": {}
-    }
-  },
-  "root_home_curtainContentHumidityTitle": "Humidity",
-  "root_home_curtainContentHumidityValueText": "{humidity}%",
-  "@root_home_curtainContentHumidityValueText": {
-    "placeholders": {
-      "humidity": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentWindSpeedTitle": "Wind",
-  "root_home_curtainContentWindSpeedValueMetricText": "{windSpeed} m/s",
-  "@root_home_curtainContentWindSpeedValueMetricText": {
-    "placeholders": {
-      "windSpeed": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentWindSpeedValueImperialText": "{windSpeed} m/h",
-  "@root_home_curtainContentWindSpeedValueImperialText": {
-    "placeholders": {
-      "windSpeed": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentPressureTitle": "Pressure",
-  "root_home_curtainContentPressureValueMetricText": "{pressure} mm Hg",
-  "@root_home_curtainContentPressureValueMetricText": {
-    "placeholders": {
-      "pressure": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentPressureValueImperialText": "{pressure} in Hg",
-  "@root_home_curtainContentPressureValueImperialText": {
-    "placeholders": {
-      "pressure": {}
-    }
-  },
-  "root_home_curtainContentWeatherForecastTitle": "{days,plural, =1{Weather for 1 day} few{Weather for {days} days} many{Weather for {days} days} other{Weather for {days} days}}",
-  "@root_home_curtainContentWeatherForecastTitle": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      }
-    }
-  },
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsMonday": "Mo",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsTuesday": "Tu",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsWednesday": "We",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsThursday": "Th",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsFriday": "Fr",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsSaturday": "Sa",
-  "root_home_curtainContentWeatherForecastItemDaysOfWeekAbbreviationsSunday": "Su",
-  "root_home_curtainContentWeatherForecastItemTemperatureCelsiusText": "{temperature}°C",
-  "@root_home_curtainContentWeatherForecastItemTemperatureCelsiusText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentWeatherForecastItemTemperatureFahrenheitText": "{temperature}°F",
-  "@root_home_curtainContentWeatherForecastItemTemperatureFahrenheitText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentWeatherForecastItemFeelsLikeTemperatureCelsiusText": "{temperature}°C",
-  "@root_home_curtainContentWeatherForecastItemFeelsLikeTemperatureCelsiusText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_curtainContentWeatherForecastItemFeelsLikeTemperatureFahrenheitText": "{temperature}°F",
-  "@root_home_curtainContentWeatherForecastItemFeelsLikeTemperatureFahrenheitText": {
-    "placeholders": {
-      "temperature": {
-        "type": "String"
-      }
-    }
-  },
-  "root_home_weatherLoadingConnectionErrorMessage": "No internet connection",
-  "root_home_weatherLoadingUndefinedErrorMessageTitle": "Something went wrong",
-  "root_home_weatherLoadingUndefinedErrorMessageSubtitle": "Technical error, we are solving the issue",
-  "root_home_weatherLoadingTryAgainButtonText": "Try again",
-  "root_home_choicesLoadingConnectionErrorMessage": "No internet connection",
-  "root_home_choicesLoadingUndefinedErrorMessageTitle": "Something went wrong",
-  "root_home_choicesLoadingUndefinedErrorMessageSubtitle": "Technical error, we are solving the issue",
-  "root_home_choicesLoadingTryAgainButtonText": "Try again",
+  "root_projects_search_input_hint": "Search",
+  "root_projects_projectCard_contactsTitle": "Contacts:",
+  "root_projects_projectCard_nameTitle": "Name:",
+  "root_projects_projectCard_descriptionTitle": "Description:",
+  "root_projects_projectCard_applyButtonText": "Apply",
 
-  "root_user_looksCountText": "{count, plural, =1{Look} other{Looks}}",
-  "@root_user_looksCountText": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "root_user_followersCountText": "{count, plural, =1{Follower} other{Followers}}",
-  "@root_user_followersCountText": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "root_user_followsCountText": "{count, plural, =1{Follow} other{Follows}}",
-  "@root_user_followsCountText": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
+  "root_applications_sentApplicationsTabTitle": "Outgoing",
+  "root_applications_incomingApplicationsTabTitle": "Incoming",
 
-  "root_followers_search_input_hint": "Search",
-  "root_follows_search_input_hint": "Search",
+  "root_applications_applicationCard_messageTitle": "Accompanying message:",
+  "root_applications_applicationCard_statusTitle": "Status:",
+  "root_applications_applicationCard_statusAppliedText": "awaiting review",
+  "root_applications_applicationCard_statusRejectedText": "rejected",
+  "root_applications_applicationCard_statusAcceptedText": "accepted",
 
+  "root_apply_messageInputHint": "Message...",
+  "root_apply_applyButtonText": "Apply",
+  "root_apply_alreadyAppliedErrorMessage": "You have already applied",
+  "root_apply_connectionErrorMessage": "No internet connection",
+  "root_apply_undefinedErrorMessage": "Something went wrong",
+
+  "common_lists_no_items_title": "Nothing found",
   "common_lists_loadingConnectionErrorMessage": "No internet connection",
   "common_lists_loadingUndefinedErrorMessageTitle": "Something went wrong",
   "common_lists_loadingUndefinedErrorMessageSubtitle": "Technical error, we are solving the issue",
