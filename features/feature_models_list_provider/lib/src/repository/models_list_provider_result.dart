@@ -3,6 +3,7 @@ import 'package:edu_models/edu_models.dart';
 
 enum ModelsListProviderResultType {
   success,
+  error,
   notAuthorized,
 }
 

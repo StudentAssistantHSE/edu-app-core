@@ -6,6 +6,9 @@ class FullNameInputWidgetSettings extends InputWidgetSettings {
   @override
   TextInputSuffixType get suffixType => TextInputSuffixType.clear;
 
+  @override
+  bool get autocorrect => true;
+
   const FullNameInputWidgetSettings({
     TextInputAction? textInputAction = TextInputAction.next,
     Iterable<String>? autofillHints = const [ AutofillHints.name ],

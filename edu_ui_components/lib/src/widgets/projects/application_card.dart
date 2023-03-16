@@ -1,6 +1,7 @@
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_ui_components/src/themes/edu_colors.dart';
 import 'package:edu_ui_components/src/themes/edu_themes.dart';
+import 'package:edu_ui_components/src/widgets/buttons/primary_button.dart';
 import 'package:edu_ui_components/src/widgets/containers/edu_card.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,10 @@ class ApplicationCard extends StatelessWidget {
   final String statusAppliedText;
   final String statusRejectedText;
   final String statusAcceptedText;
+  final String processApplicationAcceptText;
+  final String processApplicationRejectText;
   final ApplicationModel application;
+  final void Function(StatusType)? onProcessApplication;
 
   const ApplicationCard({
     required this.messageTitle,
@@ -18,7 +22,10 @@ class ApplicationCard extends StatelessWidget {
     required this.statusAppliedText,
     required this.statusRejectedText,
     required this.statusAcceptedText,
+    required this.processApplicationAcceptText,
+    required this.processApplicationRejectText,
     required this.application,
+    this.onProcessApplication,
     Key? key,
   }) : super(key: key);
 
@@ -40,7 +47,7 @@ class ApplicationCard extends StatelessWidget {
         children: [
           RichText(
             text: TextSpan(
-              text: statusTitle,
+              text: '$statusTitle ',
               style: theme.textTheme.bodyMedium,
               children: [
                 TextSpan(
@@ -63,6 +70,30 @@ class ApplicationCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(messageTitle, style: titleStyle),
           Text(application.message, style: theme.textTheme.bodyLarge),
+          if (onProcessApplication != null)
+            ...[
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: PrimaryButton(
+                      style: PrimaryButtonStyle.tertiary,
+                      expand: true,
+                      text: processApplicationRejectText,
+                      onPressed: () => onProcessApplication?.call(StatusType.rejected),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: PrimaryButton(
+                      expand: true,
+                      text: processApplicationAcceptText,
+                      onPressed: () => onProcessApplication?.call(StatusType.accepted),
+                    ),
+                  ),
+                ],
+              ),
+            ],
         ],
       ),
     );

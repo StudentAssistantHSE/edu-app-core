@@ -345,35 +345,95 @@ abstract class S {
   /// **'accepted'**
   String get root_applications_applicationCard_statusAcceptedText;
 
-  /// No description provided for @root_apply_messageInputHint.
+  /// No description provided for @root_applications_applicationCard_processApplicationRejectText.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get root_applications_applicationCard_processApplicationRejectText;
+
+  /// No description provided for @root_applications_applicationCard_processApplicationAcceptText.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get root_applications_applicationCard_processApplicationAcceptText;
+
+  /// No description provided for @root_applyProject_messageInputHint.
   ///
   /// In en, this message translates to:
   /// **'Message...'**
-  String get root_apply_messageInputHint;
+  String get root_applyProject_messageInputHint;
 
-  /// No description provided for @root_apply_applyButtonText.
+  /// No description provided for @root_applyProject_applyButtonText.
   ///
   /// In en, this message translates to:
   /// **'Apply'**
-  String get root_apply_applyButtonText;
+  String get root_applyProject_applyButtonText;
 
-  /// No description provided for @root_apply_alreadyAppliedErrorMessage.
+  /// No description provided for @root_applyProject_alreadyAppliedErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'You have already applied'**
-  String get root_apply_alreadyAppliedErrorMessage;
+  String get root_applyProject_alreadyAppliedErrorMessage;
 
-  /// No description provided for @root_apply_connectionErrorMessage.
+  /// No description provided for @root_applyProject_connectionErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'No internet connection'**
-  String get root_apply_connectionErrorMessage;
+  String get root_applyProject_connectionErrorMessage;
 
-  /// No description provided for @root_apply_undefinedErrorMessage.
+  /// No description provided for @root_applyProject_undefinedErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'Something went wrong'**
-  String get root_apply_undefinedErrorMessage;
+  String get root_applyProject_undefinedErrorMessage;
+
+  /// No description provided for @root_createProject_createButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get root_createProject_createButtonText;
+
+  /// No description provided for @root_createProject_nameInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get root_createProject_nameInputHint;
+
+  /// No description provided for @root_createProject_descriptionInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get root_createProject_descriptionInputHint;
+
+  /// No description provided for @root_createProject_contactsInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts'**
+  String get root_createProject_contactsInputHint;
+
+  /// No description provided for @root_createProject_categoriesText.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get root_createProject_categoriesText;
+
+  /// No description provided for @root_createProject_categoriesInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Start typing...'**
+  String get root_createProject_categoriesInputHint;
+
+  /// No description provided for @root_createProject_connectionErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get root_createProject_connectionErrorMessage;
+
+  /// No description provided for @root_createProject_undefinedErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get root_createProject_undefinedErrorMessage;
 
   /// No description provided for @common_lists_no_items_title.
   ///

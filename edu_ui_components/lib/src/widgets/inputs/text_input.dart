@@ -41,6 +41,7 @@ class TextInput extends StatefulWidget {
   final int? maxLines;
   final bool expands;
   final TextAlignVertical? textAlignVertical;
+  final FocusNode? focusNode;
 
   const TextInput({
     this.enabled = true,
@@ -64,6 +65,7 @@ class TextInput extends StatefulWidget {
     this.maxLines = 1,
     this.expands = false,
     this.textAlignVertical,
+    this.focusNode,
     Key? key,
   }) : super(key: key);
 
@@ -195,6 +197,7 @@ class _TextInputState extends State<TextInput> {
       maxLines: widget.maxLines,
       expands: widget.expands,
       textAlignVertical: widget.textAlignVertical,
+      focusNode: widget.focusNode,
     );
   }
 

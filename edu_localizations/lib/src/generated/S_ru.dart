@@ -133,19 +133,49 @@ class SRu extends S {
   String get root_applications_applicationCard_statusAcceptedText => 'принято';
 
   @override
-  String get root_apply_messageInputHint => 'Сообщение...';
+  String get root_applications_applicationCard_processApplicationRejectText => 'Отклонить';
 
   @override
-  String get root_apply_applyButtonText => 'Записаться';
+  String get root_applications_applicationCard_processApplicationAcceptText => 'Принять';
 
   @override
-  String get root_apply_alreadyAppliedErrorMessage => 'Вы уже записаны';
+  String get root_applyProject_messageInputHint => 'Сообщение...';
 
   @override
-  String get root_apply_connectionErrorMessage => 'Отсутствует подключение к интернету';
+  String get root_applyProject_applyButtonText => 'Записаться';
 
   @override
-  String get root_apply_undefinedErrorMessage => 'Что-то пошло не так';
+  String get root_applyProject_alreadyAppliedErrorMessage => 'Вы уже записаны';
+
+  @override
+  String get root_applyProject_connectionErrorMessage => 'Отсутствует подключение к интернету';
+
+  @override
+  String get root_applyProject_undefinedErrorMessage => 'Что-то пошло не так';
+
+  @override
+  String get root_createProject_createButtonText => 'Создать';
+
+  @override
+  String get root_createProject_nameInputHint => 'Название';
+
+  @override
+  String get root_createProject_descriptionInputHint => 'Описание';
+
+  @override
+  String get root_createProject_contactsInputHint => 'Контакты';
+
+  @override
+  String get root_createProject_categoriesText => 'Категории';
+
+  @override
+  String get root_createProject_categoriesInputHint => 'Начните вводить...';
+
+  @override
+  String get root_createProject_connectionErrorMessage => 'Отсутствует подключение к интернету';
+
+  @override
+  String get root_createProject_undefinedErrorMessage => 'Что-то пошло не так';
 
   @override
   String get common_lists_no_items_title => 'Ничего не найдено';

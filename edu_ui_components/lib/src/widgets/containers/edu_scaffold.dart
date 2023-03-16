@@ -21,6 +21,7 @@ class EduScaffold extends StatelessWidget {
   final Widget? body;
   final Widget? bottomNavigationBar;
   final WaveAppBarSettings? waveAppBarSettings;
+  final Widget? floatingActionButton;
 
   const EduScaffold({
     this.appBar,
@@ -29,6 +30,7 @@ class EduScaffold extends StatelessWidget {
     this.resizeToAvoidBottomInset = true,
     this.useSafeArea = true,
     this.waveAppBarSettings,
+    this.floatingActionButton,
     Key? key,
   }) : super(key: key);
 
@@ -65,6 +67,7 @@ class EduScaffold extends StatelessWidget {
         automaticallyImplyLeading: waveAppBarSettings?.automaticallyApplyLeading ?? true,
         showBorderOnScroll: false,
       ) : appBar,
+      floatingActionButton: floatingActionButton,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       body: content,
       bottomNavigationBar: bottomNavigationBar,

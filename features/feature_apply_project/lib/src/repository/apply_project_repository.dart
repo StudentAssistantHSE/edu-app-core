@@ -27,10 +27,10 @@ class ApplyProjectRepository {
       return ApplyProjectResult.success;
     }
 
-    if (response.statusCode == 400) {
-      return ApplyProjectResult.alreadyApplied;
+    if (response.statusCode == 403) {
+      return ApplyProjectResult.notAuthorized;
     }
 
-    return ApplyProjectResult.notAuthorized;
+    return ApplyProjectResult.alreadyApplied;
   }
 }

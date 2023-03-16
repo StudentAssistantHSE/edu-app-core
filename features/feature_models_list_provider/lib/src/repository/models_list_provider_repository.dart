@@ -28,8 +28,10 @@ class ModelsListProviderRepository<T extends BaseModel> {
       Method.get,
       queryParameters: <String, dynamic>{
         ...?queryParameters,
-        ModelsListProviderQueryParameters.skip: (page - 1) * (pageSize ?? _defaultPageSize),
-        ModelsListProviderQueryParameters.take: pageSize ?? _defaultPageSize,
+        if (pageSize != -1)
+          ModelsListProviderQueryParameters.skip: (page - 1) * (pageSize ?? _defaultPageSize),
+        if (pageSize != -1)
+          ModelsListProviderQueryParameters.take: pageSize ?? _defaultPageSize,
       },
     );
 
@@ -42,6 +44,10 @@ class ModelsListProviderRepository<T extends BaseModel> {
       );
     }
 
-    return ModelsListProviderResult<T>(resultType: ModelsListProviderResultType.notAuthorized);
+    if (response.statusCode == 403) {
+      return ModelsListProviderResult<T>(resultType: ModelsListProviderResultType.notAuthorized);
+    }
+
+    return ModelsListProviderResult<T>(resultType: ModelsListProviderResultType.error);
   }
 }

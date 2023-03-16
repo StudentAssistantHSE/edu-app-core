@@ -133,19 +133,49 @@ class SEn extends S {
   String get root_applications_applicationCard_statusAcceptedText => 'accepted';
 
   @override
-  String get root_apply_messageInputHint => 'Message...';
+  String get root_applications_applicationCard_processApplicationRejectText => 'Reject';
 
   @override
-  String get root_apply_applyButtonText => 'Apply';
+  String get root_applications_applicationCard_processApplicationAcceptText => 'Accept';
 
   @override
-  String get root_apply_alreadyAppliedErrorMessage => 'You have already applied';
+  String get root_applyProject_messageInputHint => 'Message...';
 
   @override
-  String get root_apply_connectionErrorMessage => 'No internet connection';
+  String get root_applyProject_applyButtonText => 'Apply';
 
   @override
-  String get root_apply_undefinedErrorMessage => 'Something went wrong';
+  String get root_applyProject_alreadyAppliedErrorMessage => 'You have already applied';
+
+  @override
+  String get root_applyProject_connectionErrorMessage => 'No internet connection';
+
+  @override
+  String get root_applyProject_undefinedErrorMessage => 'Something went wrong';
+
+  @override
+  String get root_createProject_createButtonText => 'Create';
+
+  @override
+  String get root_createProject_nameInputHint => 'Name';
+
+  @override
+  String get root_createProject_descriptionInputHint => 'Description';
+
+  @override
+  String get root_createProject_contactsInputHint => 'Contacts';
+
+  @override
+  String get root_createProject_categoriesText => 'Categories';
+
+  @override
+  String get root_createProject_categoriesInputHint => 'Start typing...';
+
+  @override
+  String get root_createProject_connectionErrorMessage => 'No internet connection';
+
+  @override
+  String get root_createProject_undefinedErrorMessage => 'Something went wrong';
 
   @override
   String get common_lists_no_items_title => 'Nothing found';

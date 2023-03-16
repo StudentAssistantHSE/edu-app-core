@@ -68,6 +68,9 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
         case ModelsListProviderResultType.notAuthorized:
           emit(state.copyWith(status: ModelsListProviderStatus.notAuthorized));
           break;
+        case ModelsListProviderResultType.error:
+          emit(state.copyWith(status: ModelsListProviderStatus.refreshingUndefinedError));
+          break;
       }
     } on Exception catch (e) {
       emit(state.copyWith(
@@ -106,6 +109,9 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
           break;
         case ModelsListProviderResultType.notAuthorized:
           emit(state.copyWith(status: ModelsListProviderStatus.notAuthorized));
+          break;
+        case ModelsListProviderResultType.error:
+          emit(state.copyWith(status: ModelsListProviderStatus.loadingNextPageUndefinedError));
           break;
       }
     } on Exception catch (e) {
@@ -151,6 +157,9 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
           break;
         case ModelsListProviderResultType.notAuthorized:
           emit(state.copyWith(status: ModelsListProviderStatus.notAuthorized));
+          break;
+        case ModelsListProviderResultType.error:
+          emit(state.copyWith(status: ModelsListProviderStatus.reloadingPageUndefinedError));
           break;
       }
     } on Exception catch (e) {
