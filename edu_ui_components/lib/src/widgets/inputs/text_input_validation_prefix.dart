@@ -1,15 +1,14 @@
 import 'dart:async';
 
-import 'package:edu_ui_components/edu_ui_components.dart';
-import 'package:edu_ui_components/src/themes/edu_colors.dart';
+import 'package:edu_ui_components/src/icons/custom_icons.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:flutter/material.dart';
 
 enum TextInputValidationHelperEvent {
   denied,
   replaced,
 }
-
-const _colorTransition = EduTransitions.standard;
 
 class TextInputValidationPrefix extends StatefulWidget {
   final bool isValid;
@@ -32,7 +31,7 @@ class TextInputValidationPrefixState extends State<TextInputValidationPrefix> {
   final _invalidCheckKey = UniqueKey();
 
   Timer? _flashTimer;
-  Color? _flashColor;
+  ColorSchemeReference? _flashColor;
 
   @override
   void dispose() {
@@ -42,33 +41,49 @@ class TextInputValidationPrefixState extends State<TextInputValidationPrefix> {
 
   @override
   Widget build(BuildContext context) {
-    final color = _flashColor
-        ?? (widget.isValid ? EduColors.success : null)?.withOpacity(widget.enabled ? 1.0 : 0.54)
+    final theme = EduTheme.of(context);
+    final color = _flashColor?.resolveColorScheme(theme.colorScheme)
+        ?? (widget.isValid ? theme.textInputValidationPrefixTheme.successColor : null)
+            ?.resolveColorScheme(theme.colorScheme)
+            .withOpacity(widget.enabled
+                ? 1.0
+                : theme.textInputValidationPrefixTheme
+                    .disabledOpacity.resolveOpacityTheme(theme.opacityTheme),
+            )
         ?? IconTheme.of(context).color
         ?? Colors.black;
 
+    final flashTransition = theme.textInputValidationPrefixTheme.flashTransition
+        .resolveTransitionsTheme(theme.transitionsTheme);
+    final switchInTransition = theme.textInputValidationPrefixTheme.iconSwitchInTransition
+        .resolveTransitionsTheme(theme.transitionsTheme);
+    final switchOutTransition = theme.textInputValidationPrefixTheme.iconSwitchOutTransition
+        .resolveTransitionsTheme(theme.transitionsTheme);
     final content = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: theme.textInputValidationPrefixTheme.padding,
       child: AnimatedContainer(
-        duration: _colorTransition.duration,
-        curve: _colorTransition.curve,
+        duration: flashTransition.duration,
+        curve: flashTransition.curve,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: color),
         ),
         child: AnimatedTheme(
-          duration: _colorTransition.duration,
-          curve: _colorTransition.curve,
+          duration: flashTransition.duration,
+          curve: flashTransition.curve,
           data: Theme.of(context).copyWith(
-            iconTheme: IconThemeData(color: color, size: 20),
+            iconTheme: IconThemeData(
+              color: color,
+              size: theme.textInputValidationPrefixTheme.iconSize,
+            ),
           ),
           child: AnimatedSwitcher(
-            duration: EduTransitions.standardDecelerate.duration,
-            reverseDuration: EduTransitions.standardAccelerate.duration,
-            switchInCurve: EduTransitions.standardDecelerate.curve,
-            switchOutCurve: EduTransitions.standardAccelerate.curve,
+            duration: switchInTransition.duration,
+            reverseDuration: switchOutTransition.duration,
+            switchInCurve: switchInTransition.curve,
+            switchOutCurve: switchOutTransition.curve,
             child: widget.isValid
-                ? Icon(Icons.check_rounded, key: _validCheckKey)
+                ? Icon(CustomIcons.check, key: _validCheckKey)
                 : Icon(Icons.question_mark_rounded, key: _invalidCheckKey),
           ),
         ),
@@ -89,22 +104,28 @@ class TextInputValidationPrefixState extends State<TextInputValidationPrefix> {
     _flashTimer?.cancel();
     switch (event) {
       case TextInputValidationHelperEvent.denied:
-        final flashColor = Theme.of(context).colorScheme.error;
+        final theme = EduTheme.of(context);
+        final flashColor = theme.textInputValidationPrefixTheme.deniedFlashColor;
         if (_flashColor != flashColor) {
           setState(() => _flashColor = flashColor);
         }
-        _flashTimer = Timer(_colorTransition.duration, () {
-          setState(() => _flashColor = null);
-        });
+        _flashTimer = Timer(
+          theme.textInputValidationPrefixTheme.flashTransition
+              .resolveTransitionsTheme(theme.transitionsTheme).duration,
+          () => setState(() => _flashColor = null),
+        );
         break;
       case TextInputValidationHelperEvent.replaced:
-        final flashColor = Theme.of(context).colorScheme.secondary;
+        final theme = EduTheme.of(context);
+        final flashColor = theme.textInputValidationPrefixTheme.replacedFlashColor;
         if (_flashColor != flashColor) {
           setState(() => _flashColor = flashColor);
         }
-        _flashTimer = Timer(_colorTransition.duration, () {
-          setState(() => _flashColor = null);
-        });
+        _flashTimer = Timer(
+          theme.textInputValidationPrefixTheme.flashTransition
+              .resolveTransitionsTheme(theme.transitionsTheme).duration,
+          () => setState(() => _flashColor = null),
+        );
         break;
     }
   }

@@ -1,8 +1,8 @@
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_repositories/edu_repositories.dart';
-import 'package:feature_process_application_project/src/repository/process_application_body_parameters.dart';
-import 'package:feature_process_application_project/src/repository/process_application_paths.dart';
-import 'package:feature_process_application_project/src/repository/process_application_result.dart';
+import 'package:feature_process_application/src/repository/process_application_body_parameters.dart';
+import 'package:feature_process_application/src/repository/process_application_paths.dart';
+import 'package:feature_process_application/src/repository/process_application_result.dart';
 
 class ProcessApplicationRepository {
   final NetworkRepository _networkRepository;

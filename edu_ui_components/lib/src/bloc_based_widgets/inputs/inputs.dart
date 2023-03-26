@@ -6,3 +6,5 @@ export 'input_widget_settings.dart';
 export 'password_input_widget_settings.dart';
 export 'repeated_password_input_widget_settings.dart';
 export 'search_input_widget_settings.dart';
+export 'selection_input_state_controller.dart';
+export 'selection_input_widget.dart';

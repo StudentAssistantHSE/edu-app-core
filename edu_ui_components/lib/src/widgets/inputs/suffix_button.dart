@@ -14,6 +14,9 @@ class SuffixButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => InkWell(
+    highlightColor: Colors.transparent,
+    splashColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
     canRequestFocus: false,
     onTap: enabled ? onPressed : null,
     child: icon,

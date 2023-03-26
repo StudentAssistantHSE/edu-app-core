@@ -85,6 +85,9 @@ class SEn extends S {
   String get registration_finishRegistration_startButtonText => 'Let\'s start';
 
   @override
+  String get root_bottomNavigationBar_recommendationsLabel => 'For you';
+
+  @override
   String get root_bottomNavigationBar_searchLabel => 'Search';
 
   @override
@@ -110,6 +113,9 @@ class SEn extends S {
 
   @override
   String get root_projects_projectCard_applyButtonText => 'Apply';
+
+  @override
+  String get root_projects_projectCard_recommendationsText => 'Recommendations';
 
   @override
   String get root_applications_sentApplicationsTabTitle => 'Outgoing';
@@ -178,17 +184,101 @@ class SEn extends S {
   String get root_createProject_undefinedErrorMessage => 'Something went wrong';
 
   @override
-  String get common_lists_no_items_title => 'Nothing found';
+  String get root_profile_connectionErrorMessage => 'No internet connection';
 
   @override
-  String get common_lists_loadingConnectionErrorMessage => 'No internet connection';
+  String get root_profile_undefinedErrorMessageTitle => 'Something went wrong';
 
   @override
-  String get common_lists_loadingUndefinedErrorMessageTitle => 'Something went wrong';
+  String get root_profile_undefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
 
   @override
-  String get common_lists_loadingUndefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
+  String get root_profile_tryAgainButtonText => 'Try again';
 
   @override
-  String get common_lists_loadingTryAgainButtonText => 'Try again';
+  String get root_profile_emailTitle => 'E-mail';
+
+  @override
+  String get root_profile_fullNameTitle => 'Full name';
+
+  @override
+  String get root_profile_facultyTitle => 'Faculty';
+
+  @override
+  String get root_profile_facultyNotSetText => 'Not specified';
+
+  @override
+  String get root_profile_bioTitle => 'About me';
+
+  @override
+  String get root_profile_bioNotSetText => 'Not specified';
+
+  @override
+  String get root_profile_categoriesTitle => 'Skills';
+
+  @override
+  String get root_profile_categoriesNotSetText => 'Not specified';
+
+  @override
+  String get root_profile_logoutButtonText => 'Logout';
+
+  @override
+  String get root_profileEditing_connectionErrorMessage => 'No internet connection';
+
+  @override
+  String get root_profileEditing_undefinedErrorMessageTitle => 'Something went wrong';
+
+  @override
+  String get root_profileEditing_undefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
+
+  @override
+  String get root_profileEditing_tryAgainButtonText => 'Try again';
+
+  @override
+  String get root_profileEditing_emailTitle => 'E-mail';
+
+  @override
+  String get root_profileEditing_emailInputHint => 'E-mail';
+
+  @override
+  String get root_profileEditing_fullNameTitle => 'Full name';
+
+  @override
+  String get root_profileEditing_fullNameInputHint => 'Full name';
+
+  @override
+  String get root_profileEditing_facultyTitle => 'Faculty';
+
+  @override
+  String get root_profileEditing_facultyNotSetText => 'Not specified';
+
+  @override
+  String get root_profileEditing_bioTitle => 'About me';
+
+  @override
+  String get root_profileEditing_bioNotSetText => 'Not specified';
+
+  @override
+  String get root_profileEditing_categoriesTitle => 'Skills';
+
+  @override
+  String get root_profileEditing_categoriesInputHint => 'Start typing...';
+
+  @override
+  String get root_profileEditing_submitButtonText => 'Save';
+
+  @override
+  String get common_lists_loading_noItemsMessage => 'Nothing found';
+
+  @override
+  String get common_lists_loading_connectionErrorMessage => 'No internet connection';
+
+  @override
+  String get common_lists_loading_undefinedErrorMessageTitle => 'Something went wrong';
+
+  @override
+  String get common_lists_loading_undefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
+
+  @override
+  String get common_lists_loading_tryAgainButtonText => 'Try again';
 }

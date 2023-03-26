@@ -64,7 +64,7 @@ class SRu extends S {
   String get registration_registration_passwordRequiredSymbolsDialogActionText => 'OK';
 
   @override
-  String get registration_registration_submitRegistrationButtonText => 'Зарегестрироваться';
+  String get registration_registration_submitRegistrationButtonText => 'Зарегистрироваться';
 
   @override
   String get registration_registration_noRepeatedPasswordMatchMessage => 'Пароли не совпадают';
@@ -83,6 +83,9 @@ class SRu extends S {
 
   @override
   String get registration_finishRegistration_startButtonText => 'Начинаем';
+
+  @override
+  String get root_bottomNavigationBar_recommendationsLabel => 'Для вас';
 
   @override
   String get root_bottomNavigationBar_searchLabel => 'Поиск';
@@ -110,6 +113,9 @@ class SRu extends S {
 
   @override
   String get root_projects_projectCard_applyButtonText => 'Записаться';
+
+  @override
+  String get root_projects_projectCard_recommendationsText => 'Рекоммендации';
 
   @override
   String get root_applications_sentApplicationsTabTitle => 'Исходящие';
@@ -178,17 +184,101 @@ class SRu extends S {
   String get root_createProject_undefinedErrorMessage => 'Что-то пошло не так';
 
   @override
-  String get common_lists_no_items_title => 'Ничего не найдено';
+  String get root_profile_connectionErrorMessage => 'Отсутствует подключение к интернету';
 
   @override
-  String get common_lists_loadingConnectionErrorMessage => 'Отсутствует подключение к интернету';
+  String get root_profile_undefinedErrorMessageTitle => 'Что-то пошло не так';
 
   @override
-  String get common_lists_loadingUndefinedErrorMessageTitle => 'Что-то пошло не так';
+  String get root_profile_undefinedErrorMessageSubtitle => 'Техническая ошибка, мы решаем вопрос';
 
   @override
-  String get common_lists_loadingUndefinedErrorMessageSubtitle => 'Техническая ошибка, мы решаем вопрос';
+  String get root_profile_tryAgainButtonText => 'Повторить попытку';
 
   @override
-  String get common_lists_loadingTryAgainButtonText => 'Повторить попытку';
+  String get root_profile_emailTitle => 'E-mail';
+
+  @override
+  String get root_profile_fullNameTitle => 'Полное имя';
+
+  @override
+  String get root_profile_facultyTitle => 'Факультет';
+
+  @override
+  String get root_profile_facultyNotSetText => 'Не указан';
+
+  @override
+  String get root_profile_bioTitle => 'О себе';
+
+  @override
+  String get root_profile_bioNotSetText => 'Не указано';
+
+  @override
+  String get root_profile_categoriesTitle => 'Навыки';
+
+  @override
+  String get root_profile_categoriesNotSetText => 'Не указаны';
+
+  @override
+  String get root_profile_logoutButtonText => 'Выйти';
+
+  @override
+  String get root_profileEditing_connectionErrorMessage => 'Отсутствует подключение к интернету';
+
+  @override
+  String get root_profileEditing_undefinedErrorMessageTitle => 'Что-то пошло не так';
+
+  @override
+  String get root_profileEditing_undefinedErrorMessageSubtitle => 'Техническая ошибка, мы решаем вопрос';
+
+  @override
+  String get root_profileEditing_tryAgainButtonText => 'Повторить попытку';
+
+  @override
+  String get root_profileEditing_emailTitle => 'E-mail';
+
+  @override
+  String get root_profileEditing_emailInputHint => 'E-mail';
+
+  @override
+  String get root_profileEditing_fullNameTitle => 'Полное имя';
+
+  @override
+  String get root_profileEditing_fullNameInputHint => 'Полное имя';
+
+  @override
+  String get root_profileEditing_facultyTitle => 'Факультет';
+
+  @override
+  String get root_profileEditing_facultyNotSetText => 'Не указан';
+
+  @override
+  String get root_profileEditing_bioTitle => 'О себе';
+
+  @override
+  String get root_profileEditing_bioNotSetText => 'Не указано';
+
+  @override
+  String get root_profileEditing_categoriesTitle => 'Навыки';
+
+  @override
+  String get root_profileEditing_categoriesInputHint => 'Начните вводить...';
+
+  @override
+  String get root_profileEditing_submitButtonText => 'Сохранить';
+
+  @override
+  String get common_lists_loading_noItemsMessage => 'Ничего не найдено';
+
+  @override
+  String get common_lists_loading_connectionErrorMessage => 'Отсутствует подключение к интернету';
+
+  @override
+  String get common_lists_loading_undefinedErrorMessageTitle => 'Что-то пошло не так';
+
+  @override
+  String get common_lists_loading_undefinedErrorMessageSubtitle => 'Техническая ошибка, мы решаем вопрос';
+
+  @override
+  String get common_lists_loading_tryAgainButtonText => 'Повторить попытку';
 }

@@ -1,33 +1,24 @@
-import 'package:edu_ui_components/assets/assets.dart';
-import 'package:flutter/material.dart';
+import 'package:edu_ui_components/assets/errors_images_assets.dart';
+import 'package:edu_ui_components/src/widgets/images/edu_image.dart';
+import 'package:flutter/foundation.dart';
 
 enum ErrorImageType {
   connectionError,
   undefinedError,
 }
 
-extension _ErrorImageType on ErrorImageType {
+class ErrorImage extends EduImage {
+  final ErrorImageType type;
+
+  @override
   String get path {
-    switch (this) {
+    switch (type) {
       case ErrorImageType.connectionError:
-        return _withPrefix('connection_error.png');
+        return ErrorsImagesAssets.connectionError;
       case ErrorImageType.undefinedError:
-        return _withPrefix('undefined_error.png');
+        return ErrorsImagesAssets.undefinedError;
     }
   }
 
-  String _withPrefix(String path) => '${Assets.imagesPath}/errors/$path';
-}
-
-class ErrorImage extends StatelessWidget {
-  final ErrorImageType type;
-
-  const ErrorImage({ required this.type, Key? key }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Image.asset(
-    type.path,
-    package: Assets.packageName,
-    fit: BoxFit.contain,
-  );
+  const ErrorImage({ required this.type, Key? key }) : super(useColor: false, key: key);
 }

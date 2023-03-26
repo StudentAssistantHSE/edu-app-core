@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/referencable/referencable.dart';
 import 'package:edu_ui_components/src/widgets/inputs/custom_pin_code_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,8 +43,21 @@ class CodeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final theme = EduTheme.of(context);
+    final textStyle = theme.codeInputTheme.codeTextStyle
+        .resolveTextTheme(theme.textTheme).copyWith(
+          color: theme.codeInputTheme.codeTextColor.resolveColorScheme(theme.colorScheme),
+        );
+
+    final activeColor = theme.codeInputTheme.activePinColor
+        .resolveColorScheme(theme.colorScheme);
+    final disabledColor = theme.codeInputTheme.disabledPinColor
+        .resolveColorScheme(theme.colorScheme);
+    final errorColor = theme.codeInputTheme.errorPinColor
+        .resolveColorScheme(theme.colorScheme);
+    final transition = theme.codeInputTheme.transition
+        .resolveTransitionsTheme(theme.transitionsTheme);
+
     return CustomPinCodeTextField(
       mainAxisAlignment: MainAxisAlignment.center,
       autoFocus: autoFocus,
@@ -56,17 +71,18 @@ class CodeInput extends StatelessWidget {
       ],
       enabled: enabled,
       backgroundColor: Colors.transparent,
-      textStyle: theme.textTheme.headlineLarge?.copyWith(color: theme.colorScheme.primary),
-      cursorColor: colorScheme.primary,
+      textStyle: textStyle,
+      cursorColor: textStyle.color,
       errorTextSpace: 0,
       pinTheme: PinTheme(
-        activeColor: colorScheme.primary,
-        selectedColor: colorScheme.primary,
-        inactiveColor: colorScheme.surfaceVariant,
-        disabledColor: colorScheme.surfaceVariant,
-        fieldWidth: 20,
-        fieldHeight: 40,
-        fieldOuterPadding: const EdgeInsets.symmetric(horizontal: 8),
+        activeColor: activeColor,
+        selectedColor: activeColor,
+        inactiveColor: disabledColor,
+        disabledColor: disabledColor,
+        errorBorderColor: errorColor,
+        fieldWidth: theme.codeInputTheme.pinWidth,
+        fieldHeight: theme.codeInputTheme.pinHeight,
+        fieldOuterPadding: EdgeInsets.symmetric(horizontal: theme.codeInputTheme.pinSpace),
       ),
       errorAnimationController: errorController,
       beforeTextPaste: (value) {
@@ -87,6 +103,8 @@ class CodeInput extends StatelessWidget {
         return null;
       },
       animationType: AnimationType.scale,
+      animationDuration: transition.duration,
+      animationCurve: transition.curve,
       useHapticFeedback: true,
       keyboardType: TextInputType.number,
       dialogConfig: DialogConfig(

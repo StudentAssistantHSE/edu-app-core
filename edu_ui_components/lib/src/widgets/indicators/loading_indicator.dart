@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:edu_ui_components/src/icons/custom_icons.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:flutter/material.dart';
 
 class LoadingIndicator extends StatefulWidget {
-  final Color? color;
+  final ColorSchemeReference? color;
   final double scale;
 
   const LoadingIndicator({
@@ -18,9 +20,11 @@ class LoadingIndicator extends StatefulWidget {
 }
 
 class _LoadingIndicatorState extends State<LoadingIndicator> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
+  late final AnimationController _controller =  AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 1500),
+    duration: Duration(
+      milliseconds: EduTheme.of(context).loadingIndicatorTheme.duration.inMilliseconds,
+    ),
   )..repeat();
 
   @override
@@ -31,26 +35,46 @@ class _LoadingIndicatorState extends State<LoadingIndicator> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final color = widget.color ?? theme.colorScheme.primary;
+    final theme = EduTheme.of(context);
+    final color = (widget.color ?? theme.loadingIndicatorTheme.color)
+        .resolveColorScheme(theme.colorScheme);
+    final dotsSize = widget.scale * theme.loadingIndicatorTheme.dotsSize;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        _Flashing(interval: const Interval(0.1, 0.7), controller: _controller, color: color, scale: widget.scale),
-        SizedBox(width: widget.scale * 6),
+        _Flashing(
+          interval: const Interval(0.1, 0.7),
+          controller: _controller,
+          color: color,
+          size: dotsSize,
+        ),
+        SizedBox(width: dotsSize),
         _Flashing(
           interval: const Interval(0.2, 0.8),
           controller: _controller,
           color: color,
-          child: Icon(CustomIcons.lightBulb, color: color, size: widget.scale * 20),
-          scale: widget.scale,
+          child: Icon(
+            CustomIcons.lightBulb,
+            color: color,
+            size: widget.scale * theme.loadingIndicatorTheme.iconSize,
+          ),
         ),
-        SizedBox(width: widget.scale * 6),
-        _Flashing(interval: const Interval(0.3, 0.9), controller: _controller, color: color, scale: widget.scale),
-        SizedBox(width: widget.scale * 6),
-        _Flashing(interval: const Interval(0.4, 1), controller: _controller, color: color, scale: widget.scale),
+        SizedBox(width: dotsSize),
+        _Flashing(
+          interval: const Interval(0.3, 0.9),
+          controller: _controller,
+          color: color,
+          size: dotsSize,
+        ),
+        SizedBox(width: dotsSize),
+        _Flashing(
+          interval: const Interval(0.4, 1),
+          controller: _controller,
+          color: color,
+          size: dotsSize,
+        ),
       ],
     );
   }
@@ -61,14 +85,14 @@ class _Flashing extends StatelessWidget {
   final AnimationController controller;
   final Widget? child;
   final Color color;
-  final double scale;
+  final double? size;
 
   const _Flashing({
     required this.interval,
     required this.controller,
     required this.color,
     this.child,
-    this.scale = 1,
+    this.size,
   });
 
   @override
@@ -81,8 +105,8 @@ class _Flashing extends StatelessWidget {
         return Opacity(
           opacity: flashPercent,
           child: child ?? Container(
-            width: scale * 6,
-            height: scale * 6,
+            width: size,
+            height: size,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: color,

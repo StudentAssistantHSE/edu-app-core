@@ -72,7 +72,7 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
           emit(state.copyWith(status: ModelsListProviderStatus.refreshingUndefinedError));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError
             ? ModelsListProviderStatus.refreshingConnectionError
@@ -114,7 +114,7 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
           emit(state.copyWith(status: ModelsListProviderStatus.loadingNextPageUndefinedError));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError
             ? ModelsListProviderStatus.loadingNextPageConnectionError
@@ -162,7 +162,7 @@ class ModelsListProviderBloc<T extends BaseModel> extends Bloc<ModelsListProvide
           emit(state.copyWith(status: ModelsListProviderStatus.reloadingPageUndefinedError));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError
             ? ModelsListProviderStatus.reloadingPageConnectionError

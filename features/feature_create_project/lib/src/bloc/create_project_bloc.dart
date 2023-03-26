@@ -2,7 +2,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:equatable/equatable.dart';
 import 'package:feature_create_project/src/bloc/category.dart';
-import 'package:feature_create_project/src/fields/fields.dart';
+import 'package:feature_create_project/src/bloc/fields/fields.dart';
 import 'package:feature_create_project/src/repository/create_project_repository.dart';
 import 'package:feature_create_project/src/repository/create_project_result.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,53 +31,17 @@ class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
   void _onNameChanged(
     CreateProjectNameFieldChanged event,
     Emitter<CreateProjectState> emit,
-  ) {
-    final name = NameField.dirty(event.name);
-    emit(
-      state.copyWith(
-        name: name,
-        fieldsStatus: Formz.validate([
-          name,
-          state.description,
-          state.contacts,
-        ]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(name: NameField.pure(event.name)));
 
   void _onDescriptionChanged(
     CreateProjectDescriptionFieldChanged event,
     Emitter<CreateProjectState> emit,
-  ) {
-    final description = DescriptionField.dirty(event.description);
-    emit(
-      state.copyWith(
-        description: description,
-        fieldsStatus: Formz.validate([
-          state.name,
-          description,
-          state.contacts,
-        ]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(description: DescriptionField.pure(event.description)));
 
   void _onContactsChanged(
     CreateProjectContactsFieldChanged event,
     Emitter<CreateProjectState> emit,
-  ) {
-    final contacts = ContactsField.dirty(event.contacts);
-    emit(
-      state.copyWith(
-        contacts: contacts,
-        fieldsStatus: Formz.validate([
-          state.name,
-          state.description,
-          contacts,
-        ]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(contacts: ContactsField.pure(event.contacts)));
 
   void _onExistingCategoryAdded(
     CreateProjectExistingCategoryAdded event,
@@ -121,7 +85,15 @@ class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
     CreateProjectSubmitted event,
     Emitter<CreateProjectState> emit,
   ) async {
-    if (!state.fieldsStatus.isValidated) return;
+    emit(state.copyWith(
+      name: NameField.dirty(state.name.value),
+      description: DescriptionField.dirty(state.name.value),
+      contacts: ContactsField.dirty(state.name.value),
+    ));
+    final isValid = Formz.validate([state.name, state.description, state.contacts]);
+    if (!isValid) {
+      return;
+    }
 
     emit(state.copyWith(status: CreateProjectStatus.inProgress));
     try {
@@ -143,7 +115,7 @@ class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
           emit(state.copyWith(status: CreateProjectStatus.notAuthorized));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError ? CreateProjectStatus.connectionError : CreateProjectStatus.undefinedError,
       ));

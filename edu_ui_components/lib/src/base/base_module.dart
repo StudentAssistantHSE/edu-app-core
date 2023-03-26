@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_ui_components/src/base/arguments_provider.dart';
 import 'package:edu_ui_components/src/base/disposable_repository_builder.dart';
@@ -18,7 +20,6 @@ abstract class BaseModule<
   Routing extends BaseModuleRouting<Arguments>,
   Controller extends BaseModuleController
 > extends StatefulWidget {
-  final UseWillPopScope<Controller>? useWillPopScope;
   final ControllerBuilder<Controller>? moduleControllerBuilder;
   final Routing? moduleRouting;
   final BlocsBuilder<Arguments>? blocsBuilder;
@@ -26,7 +27,6 @@ abstract class BaseModule<
   final List<DisposableRepositoryBuilder>? disposableRepositoriesBuilders;
 
   const BaseModule({
-    this.useWillPopScope,
     this.moduleControllerBuilder,
     this.moduleRouting,
     this.blocsBuilder,
@@ -47,6 +47,7 @@ class _BaseModuleState<
 > extends State<BaseModule<Arguments, Routing, Controller>> {
   final _navigation = Navigation();
   final List<DisposableRepository> _disposableRepositories = [];
+  final _observer = _NavigationObserver();
 
   Controller? _controller;
 
@@ -72,18 +73,12 @@ class _BaseModuleState<
       onGenerateInitialRoutes: (navigatorState, routeName) =>
       routing?.onGenerateInitialRoutes.call(arguments, routeName)
           ?? Navigator.defaultGenerateInitialRoutes(navigatorState, routeName),
+      observers: [_observer],
     );
 
-    final useWillPopScope = widget.useWillPopScope?.call(_controller);
-    if (useWillPopScope != null) {
-      module = ValueListenableBuilder<bool>(
-        valueListenable: useWillPopScope,
-        builder: (context, value, child) => value
-          ? WillPopScope(
-              onWillPop: () async => !(await _navigation.maybePop()),
-              child: child ?? const SizedBox.shrink(),
-            )
-          : child ?? const SizedBox.shrink(),
+    if (Platform.isAndroid) {
+      module = WillPopScope(
+        onWillPop: () async => !(await _navigation.maybePop()),
         child: module,
       );
     }
@@ -128,4 +123,38 @@ class _BaseModuleState<
 
     return module;
   }
+}
+
+class _NavigationObserver extends NavigatorObserver {
+  int _routesCount = 0;
+
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    _routesCount++;
+    if (_routesCount == 2) {
+      _setWillPopCallback(true);
+    }
+  }
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    _routesCount--;
+    if (_routesCount <= 1) {
+      _setWillPopCallback(false);
+    }
+  }
+
+  void _setWillPopCallback(bool enabled) {
+    final context = navigator?.context;
+    if (context == null) {
+      return;
+    }
+    if (enabled) {
+      ModalRoute.of(context)?.addScopedWillPopCallback(_userGestureNotInProgress);
+    } else {
+      ModalRoute.of(context)?.removeScopedWillPopCallback(_userGestureNotInProgress);
+    }
+  }
+
+  Future<bool> _userGestureNotInProgress() async => navigator?.userGestureInProgress != true;
 }

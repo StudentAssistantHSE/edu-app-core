@@ -2,7 +2,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:equatable/equatable.dart';
-import 'package:feature_login/src/fields/fields.dart';
+import 'package:feature_login/src/bloc/fields/fields.dart';
 import 'package:feature_login/src/repository/login_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -28,34 +28,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onEmailChanged(
     LoginEmailFieldChanged event,
     Emitter<LoginState> emit,
-  ) {
-    final email = EmailField.dirty(event.email);
-    emit(
-      state.copyWith(
-        email: email,
-        fieldsStatus: Formz.validate([email, state.password]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(email: EmailField.pure(event.email)));
 
   void _onPasswordChanged(
     LoginPasswordFieldChanged event,
     Emitter<LoginState> emit,
-  ) {
-    final password = PasswordField.dirty(event.password);
-    emit(
-      state.copyWith(
-        password: password,
-        fieldsStatus: Formz.validate([state.email, password]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(password: PasswordField.pure(event.password)));
 
   Future<void> _onSubmitted(
     LoginSubmitted event,
     Emitter<LoginState> emit,
   ) async {
-    if (!state.fieldsStatus.isValidated) return;
+    emit(state.copyWith(
+      email: EmailField.dirty(state.email.value),
+      password: PasswordField.dirty(state.password.value),
+    ));
+    final isValid = Formz.validate([state.email, state.password]);
+    if (!isValid) {
+      return;
+    }
 
     emit(state.copyWith(status: LoginStatus.inProgress));
     try {
@@ -76,7 +67,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
 
       emit(state.copyWith(status: LoginStatus.undefinedError));
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError ? LoginStatus.connectionError : LoginStatus.undefinedError,
       ));

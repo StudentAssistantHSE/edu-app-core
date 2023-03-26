@@ -15,13 +15,12 @@ class CreateProjectState extends Equatable {
   final DescriptionField description;
   final ContactsField contacts;
   final List<Category> categories;
-  final FormzStatus fieldsStatus;
 
   bool get isSuccess => status == CreateProjectStatus.success;
   bool get isInProgress => status == CreateProjectStatus.inProgress;
 
   @override
-  List<Object?> get props => [status, name, description, contacts, categories, fieldsStatus];
+  List<Object?> get props => [status, name, description, contacts, categories];
 
   const CreateProjectState._({
     required this.status,
@@ -29,7 +28,6 @@ class CreateProjectState extends Equatable {
     required this.description,
     required this.contacts,
     required this.categories,
-    required this.fieldsStatus,
   });
 
   const CreateProjectState.initial() :
@@ -37,8 +35,7 @@ class CreateProjectState extends Equatable {
       name = const NameField.pure(),
       description = const DescriptionField.pure(),
       contacts = const ContactsField.pure(),
-      categories = const [],
-      fieldsStatus = FormzStatus.pure;
+      categories = const [];
 
   CreateProjectState copyWith({
     CreateProjectStatus? status,
@@ -46,13 +43,11 @@ class CreateProjectState extends Equatable {
     DescriptionField? description,
     ContactsField? contacts,
     List<Category>? categories,
-    FormzStatus? fieldsStatus,
   }) => CreateProjectState._(
     status: status ?? this.status,
     name: name ?? this.name,
     description: description ?? this.description,
     contacts: contacts ?? this.contacts,
     categories: categories ?? this.categories,
-    fieldsStatus: fieldsStatus ?? this.fieldsStatus,
   );
 }

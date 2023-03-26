@@ -1,22 +1,8 @@
-import 'package:edu_ui_components/src/themes/edu_themes.dart';
-import 'package:edu_ui_components/src/themes/edu_transitions.dart';
+import 'package:edu_core/edu_core.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-
-const _fadeInTransition = EduTransitions.standardDecelerate;
-const _defaultRadius = 20.0;
-const _defaultMinRadius = 0.0;
-const _defaultMaxRadius = double.infinity;
-
-class _ColorScheme {
-  final Color backgroundColor;
-  final Color foregroundColor;
-
-  const _ColorScheme({
-    required this.backgroundColor,
-    required this.foregroundColor,
-  });
-}
 
 class AvatarWithPlaceholder extends StatefulWidget {
   final String placeholderText;
@@ -41,27 +27,23 @@ class AvatarWithPlaceholder extends StatefulWidget {
 class _AvatarWithPlaceholder extends State<AvatarWithPlaceholder> {
   bool _avatarLoadingError = false;
 
-  double get _minDiameter {
-    if (widget.radius == null && widget.minRadius == null && widget.maxRadius == null) {
-      return _defaultRadius * 2.0;
+  @override
+  void didUpdateWidget(AvatarWithPlaceholder oldWidget) {
+    if (oldWidget.avatar != widget.avatar) {
+      _avatarLoadingError = false;
     }
-    return 2.0 * (widget.radius ?? widget.minRadius ?? _defaultMinRadius);
-  }
-
-  double get _maxDiameter {
-    if (widget.radius == null && widget.minRadius == null && widget.maxRadius == null) {
-      return _defaultRadius * 2.0;
-    }
-    return 2.0 * (widget.radius ?? widget.maxRadius ?? _defaultMaxRadius);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final minDiameter = _minDiameter;
-    final maxDiameter = _maxDiameter;
-    final colorScheme = _getColorScheme(widget.placeholderText, theme.colorScheme);
+    final theme = EduTheme.of(context);
+    final minDiameter = _minDiameter(theme.avatarWithPlaceholderTheme);
+    final maxDiameter = _maxDiameter(theme.avatarWithPlaceholderTheme);
+    final colorScheme = _getColorScheme(widget.placeholderText, theme.avatarWithPlaceholderTheme);
     final avatar = widget.avatar;
+    final fadeInTransition = theme.avatarWithPlaceholderTheme.fadeInTransition
+        .resolveTransitionsTheme(theme.transitionsTheme);
 
     return AnimatedContainer(
       constraints: BoxConstraints(
@@ -70,27 +52,25 @@ class _AvatarWithPlaceholder extends State<AvatarWithPlaceholder> {
         maxWidth: maxDiameter,
         maxHeight: maxDiameter,
       ),
-      duration: _fadeInTransition.duration,
-      curve: _fadeInTransition.curve,
+      duration: fadeInTransition.duration,
+      curve: fadeInTransition.curve,
       decoration: BoxDecoration(
         color: _avatarLoadingError || avatar == null
-            ? colorScheme.backgroundColor
-            : theme.primarySwatch.shade50,
+            ? colorScheme.first.resolveColorScheme(theme.colorScheme)
+            : theme.avatarWithPlaceholderTheme.backgroundColor.resolveColorScheme(theme.colorScheme),
         shape: BoxShape.circle,
       ),
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: FittedBox(
           child: AnimatedOpacity(
-            duration: _fadeInTransition.duration,
-            curve: _fadeInTransition.curve,
+            duration: fadeInTransition.duration,
+            curve: fadeInTransition.curve,
             opacity: _avatarLoadingError || avatar == null ? 1.0 : 0.0,
             child: Text(
               _getFirstCharacter(widget.placeholderText).toUpperCase(),
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: colorScheme.foregroundColor,
-                fontWeight: FontWeight.w600,
-              ),
+              style: theme.avatarWithPlaceholderTheme.letterStyle.resolveTextTheme(theme.textTheme)
+                  .copyWith(color: colorScheme.second.resolveColorScheme(theme.colorScheme)),
             ),
           ),
         ),
@@ -113,34 +93,28 @@ class _AvatarWithPlaceholder extends State<AvatarWithPlaceholder> {
     );
   }
 
-  _ColorScheme _getColorScheme(String text, ColorScheme colorScheme) {
+  double _minDiameter(AvatarWithPlaceholderTheme theme) {
+    if (widget.radius == null && widget.minRadius == null && widget.maxRadius == null) {
+      return theme.radius * 2.0;
+    }
+    return 2.0 * (widget.radius ?? widget.minRadius ?? theme.minRadius);
+  }
+
+  double _maxDiameter(AvatarWithPlaceholderTheme theme) {
+    if (widget.radius == null && widget.minRadius == null && widget.maxRadius == null) {
+      return theme.radius * 2.0;
+    }
+    return 2.0 * (widget.radius ?? widget.maxRadius ?? theme.maxRadius);
+  }
+
+  Pair<ColorSchemeReference, ColorSchemeReference> _getColorScheme(String text, AvatarWithPlaceholderTheme theme) {
     final textLower = text.toLowerCase();
     var hash = 0;
     for (var i = 0; i < textLower.length; i++) {
       hash = textLower.codeUnitAt(i) + ((hash << 5) - hash);
     }
 
-    switch (hash % 9) {
-      case 0:
-        return _ColorScheme(backgroundColor: colorScheme.primary, foregroundColor: colorScheme.onPrimary);
-      case 1:
-        return _ColorScheme(backgroundColor: colorScheme.secondary, foregroundColor: colorScheme.onSecondary);
-      case 2:
-        return _ColorScheme(backgroundColor: colorScheme.tertiary, foregroundColor: colorScheme.onTertiary);
-      case 3:
-        return _ColorScheme(backgroundColor: colorScheme.error, foregroundColor: colorScheme.onError);
-      case 4:
-        return _ColorScheme(backgroundColor: colorScheme.surfaceVariant, foregroundColor: colorScheme.onSurfaceVariant);
-      case 5:
-        return _ColorScheme(backgroundColor: colorScheme.primaryContainer, foregroundColor: colorScheme.onPrimaryContainer);
-      case 6:
-        return _ColorScheme(backgroundColor: colorScheme.secondaryContainer, foregroundColor: colorScheme.onSecondaryContainer);
-      case 7:
-        return _ColorScheme(backgroundColor: colorScheme.tertiaryContainer, foregroundColor: colorScheme.onTertiaryContainer);
-      case 8:
-        return _ColorScheme(backgroundColor: colorScheme.errorContainer, foregroundColor: colorScheme.onErrorContainer);
-    }
-    throw UnimplementedError('Hash for color scheme was computed incorrectly');
+    return theme.colors[hash % theme.colors.length];
   }
 
   String _getFirstCharacter(String text) {

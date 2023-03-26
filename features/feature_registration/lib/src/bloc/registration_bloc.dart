@@ -2,8 +2,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:equatable/equatable.dart';
-import 'package:feature_registration/src/fields/fields.dart';
-import 'package:feature_registration/src/fields/full_name_field.dart';
+import 'package:feature_registration/src/bloc/fields/fields.dart';
 import 'package:feature_registration/src/repository/registration_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -28,60 +27,37 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   void _onEmailChanged(
     RegistrationEmailFieldChanged event,
     Emitter<RegistrationState> emit,
-  ) {
-    final email = EmailField.dirty(event.email);
-    emit(
-      state.copyWith(
-        email: email,
-        fieldsStatus: Formz.validate([email, state.fullName, state.password, state.repeatedPassword]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(email: EmailField.pure(event.email)));
 
   void _onFullNameChanged(
     RegistrationFullNameFieldChanged event,
     Emitter<RegistrationState> emit,
-  ) {
-    final fullName = FullNameField.dirty(event.fullName);
-    emit(
-      state.copyWith(
-        fullName: fullName,
-        fieldsStatus: Formz.validate([state.email, fullName, state.password, state.repeatedPassword]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(fullName: FullNameField.pure(event.fullName)));
 
   void _onPasswordChanged(
     RegistrationPasswordFieldChanged event,
     Emitter<RegistrationState> emit,
-  ) {
-    final password = PasswordField.dirty(event.password);
-    emit(
-      state.copyWith(
-        password: password,
-        fieldsStatus: Formz.validate([state.email, state.fullName, password, state.repeatedPassword]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(password: PasswordField.pure(event.password)));
 
   void _onRepeatedPasswordChanged(
     RegistrationRepeatedPasswordFieldChanged event,
     Emitter<RegistrationState> emit,
-  ) {
-    final repeatedPassword = RepeatedPasswordField.dirty(event.repeatedPassword);
-    emit(
-      state.copyWith(
-        repeatedPassword: repeatedPassword,
-        fieldsStatus: Formz.validate([state.email, state.fullName, state.password, repeatedPassword]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(repeatedPassword: RepeatedPasswordField.pure(event.repeatedPassword)));
 
   Future<void> _onSubmitted(
     RegistrationSubmitted event,
     Emitter<RegistrationState> emit,
   ) async {
-    if (!state.fieldsStatus.isValidated) return;
+    emit(state.copyWith(
+      email: EmailField.dirty(state.email.value),
+      fullName: FullNameField.dirty(state.fullName.value),
+      password: PasswordField.dirty(state.password.value),
+      repeatedPassword: RepeatedPasswordField.dirty(state.repeatedPassword.value),
+    ));
+    final isValid = Formz.validate([state.email, state.fullName, state.password, state.repeatedPassword]);
+    if (!isValid) {
+      return;
+    }
 
     emit(state.copyWith(status: RegistrationStatus.inProgress));
     final repeatedPasswordValidationError = state.repeatedPassword.validateWithPassword(
@@ -110,7 +86,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       }
 
       emit(state.copyWith(status: RegistrationStatus.undefinedError));
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError ? RegistrationStatus.connectionError : RegistrationStatus.undefinedError,
       ));

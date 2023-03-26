@@ -27,21 +27,19 @@ class ApplyProjectBloc extends Bloc<ApplyProjectEvent, ApplyProjectState> {
   void _onMessageChanged(
     ApplyProjectMessageFieldChanged event,
     Emitter<ApplyProjectState> emit,
-  ) {
-    final message = MessageField.dirty(event.message);
-    emit(
-      state.copyWith(
-        message: message,
-        fieldsStatus: Formz.validate([message]),
-      ),
-    );
-  }
+  ) => emit(state.copyWith(message: MessageField.pure(event.message)));
 
   Future<void> _onSubmitted(
     ApplyProjectSubmitted event,
     Emitter<ApplyProjectState> emit,
   ) async {
-    if (!state.fieldsStatus.isValidated) return;
+    emit(state.copyWith(
+      message: MessageField.dirty(state.message.value),
+    ));
+    final isValid = Formz.validate([state.message]);
+    if (!isValid) {
+      return;
+    }
 
     emit(state.copyWith(status: ApplyProjectStatus.inProgress));
     try {
@@ -60,7 +58,7 @@ class ApplyProjectBloc extends Bloc<ApplyProjectEvent, ApplyProjectState> {
           emit(state.copyWith(status: ApplyProjectStatus.notAuthorized));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError ? ApplyProjectStatus.connectionError : ApplyProjectStatus.undefinedError,
       ));

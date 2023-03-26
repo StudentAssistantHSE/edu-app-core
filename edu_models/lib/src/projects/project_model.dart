@@ -1,5 +1,5 @@
-import 'package:edu_models/src/projects/category_model.dart';
 import 'package:edu_models/src/regular/base_model.dart';
+import 'package:edu_models/src/regular/category_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -11,7 +11,9 @@ class ProjectModel extends BaseModel {
   final String description;
   final String? contacts;
   final bool isClosed;
-  final String userFullName;
+  final String? userFullName;
+
+  @JsonKey(defaultValue: <CategoryModel> [])
   final List<CategoryModel> categories;
 
   @override

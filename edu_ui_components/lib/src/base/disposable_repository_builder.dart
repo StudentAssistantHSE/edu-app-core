@@ -1,5 +1,5 @@
 import 'package:edu_core/edu_core.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DisposableRepositoryBuilder<T extends DisposableRepository, Arguments> {

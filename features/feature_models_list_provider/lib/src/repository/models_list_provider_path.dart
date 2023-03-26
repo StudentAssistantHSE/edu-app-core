@@ -7,6 +7,9 @@ enum ModelsListProviderPath {
   sentApplications,
   incomingApplications,
   projectsCategories,
+  accountCategories,
+  faculties,
+  recommendations,
 }
 
 extension ModelsListProviderPathConverter on ModelsListProviderPath {
@@ -22,6 +25,12 @@ extension ModelsListProviderPathConverter on ModelsListProviderPath {
         return ModelsListProviderPaths.incomingApplications;
       case ModelsListProviderPath.projectsCategories:
         return ModelsListProviderPaths.projectsCategories;
+      case ModelsListProviderPath.accountCategories:
+        return ModelsListProviderPaths.accountCategories;
+      case ModelsListProviderPath.faculties:
+        return ModelsListProviderPaths.faculties;
+      case ModelsListProviderPath.recommendations:
+        return ModelsListProviderPaths.recommendations;
     }
   }
 
@@ -36,6 +45,12 @@ extension ModelsListProviderPathConverter on ModelsListProviderPath {
       case ModelsListProviderPath.sentApplications:
         return ModelsListProviderKeys.listToMap;
       case ModelsListProviderPath.projectsCategories:
+        return ModelsListProviderKeys.listToMap;
+      case ModelsListProviderPath.accountCategories:
+        return ModelsListProviderKeys.listToMap;
+      case ModelsListProviderPath.faculties:
+        return ModelsListProviderKeys.listToMap;
+      case ModelsListProviderPath.recommendations:
         return ModelsListProviderKeys.listToMap;
     }
   }

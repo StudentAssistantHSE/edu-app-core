@@ -1,3 +1,6 @@
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/referencable/edu_color_scheme.dart';
+import 'package:edu_ui_components/src/themes/models/referencable/edu_text_theme.dart';
 import 'package:edu_ui_components/src/widgets/images/avatar_with_placeholder.dart';
 import 'package:flutter/material.dart';
 
@@ -14,25 +17,30 @@ class AvatarRow extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      AvatarWithPlaceholder(
-        placeholderText: text,
-        avatar: avatar,
-        radius: 16,
-      ),
-      const SizedBox(width: 8),
-      Expanded(
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.bodyMedium,
-          overflow: TextOverflow.ellipsis,
+  Widget build(BuildContext context) {
+    final theme = EduTheme.of(context);
+    return Row(
+      children: [
+        AvatarWithPlaceholder(
+          key: ValueKey(avatar),
+          placeholderText: text,
+          avatar: avatar,
+          radius: theme.avatarRowTheme.avatarRadius,
         ),
-      ),
-      if (action != null)
-        const SizedBox(width: 8),
-      if (action != null)
-        action!,
-    ],
-  );
+        SizedBox(width: theme.avatarRowTheme.spacer),
+        Expanded(
+          child: Text(
+            text,
+            style: theme.avatarRowTheme.textStyle.resolveTextTheme(theme.textTheme)
+                .copyWith(color: theme.avatarRowTheme.foregroundColor.resolveColorScheme(theme.colorScheme)),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        if (action != null)
+          SizedBox(width: theme.avatarRowTheme.spacer),
+        if (action != null)
+          action!,
+      ],
+    );
+  }
 }

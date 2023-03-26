@@ -1,3 +1,3 @@
-export 'edu_themes.dart' show ThemeDataX, ColorSchemeX, ThemeTypeUIConverter;
-export 'edu_transitions.dart';
-export 'edu_ui_constants.dart';
+export 'edu_theme.dart';
+export 'edu_themes.dart' show ThemeTypeUIConverter;
+export 'models/models.dart';

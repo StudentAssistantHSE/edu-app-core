@@ -40,6 +40,7 @@ class CustomIcons {
   static const IconData lock = IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData alert = IconData(0xe82c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrowLeft = IconData(0xe832, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData check = IconData(0xe835, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData starOutline = IconData(0xe83f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData lightBulb = IconData(0xf0eb, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 

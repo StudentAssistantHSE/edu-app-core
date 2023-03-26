@@ -1,5 +1,5 @@
 import 'package:edu_core/edu_core.dart';
-import 'package:edu_ui_components/src/dialogs/edu_picker.dart';
+import 'package:edu_ui_components/src/widgets/dialogs/edu_picker.dart';
 import 'package:edu_ui_components/src/widgets/inputs/text_input.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +29,7 @@ class SelectionInput<T> extends StatefulWidget {
   final String? hint;
   final ValueChanged<T?>? onChanged;
   final SelectionInputSuffixType suffixType;
+  final bool errorOccurred;
 
   const SelectionInput({
     required this.items,
@@ -36,6 +37,7 @@ class SelectionInput<T> extends StatefulWidget {
     this.hint,
     this.onChanged,
     this.suffixType = SelectionInputSuffixType.empty,
+    this.errorOccurred = false,
     Key? key,
   }) : super(key: key);
 
@@ -86,6 +88,7 @@ class _SelectionInputState<T> extends State<SelectionInput<T>> {
                 ? widget.onChanged?.call(null)
                 : null,
             enabled: !disabled,
+            errorOccurred: widget.errorOccurred,
           ),
         ),
       ),

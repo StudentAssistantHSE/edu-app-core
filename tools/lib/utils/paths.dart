@@ -19,7 +19,7 @@ abstract class Paths {
       final fromFileContent = await fromFile.readAsString();
       await toFile.writeAsString(fromFileContent);
       return null;
-    } on Exception catch (_) {
+    } on Object catch (_) {
       return 'Error while replacing content from ${fromFile.path} to ${toFile.path}';
     }
   }
@@ -41,7 +41,7 @@ abstract class Paths {
       replacedLines.retainWhere((element) => element != null);
       await file.writeAsString(replacedLines.join('\r\n'));
       return null;
-    } on Exception catch (_) {
+    } on Object catch (_) {
       return 'Error while replacing content in ${file.path}';
     }
   }
@@ -105,7 +105,7 @@ abstract class Paths {
         }
       }
       return false;
-    } on Exception catch (_) {
+    } on Object catch (_) {
       return false;
     }
   }

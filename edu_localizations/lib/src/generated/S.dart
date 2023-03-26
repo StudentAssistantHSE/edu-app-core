@@ -249,6 +249,12 @@ abstract class S {
   /// **'Let\'s start'**
   String get registration_finishRegistration_startButtonText;
 
+  /// No description provided for @root_bottomNavigationBar_recommendationsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'For you'**
+  String get root_bottomNavigationBar_recommendationsLabel;
+
   /// No description provided for @root_bottomNavigationBar_searchLabel.
   ///
   /// In en, this message translates to:
@@ -302,6 +308,12 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Apply'**
   String get root_projects_projectCard_applyButtonText;
+
+  /// No description provided for @root_projects_projectCard_recommendationsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendations'**
+  String get root_projects_projectCard_recommendationsText;
 
   /// No description provided for @root_applications_sentApplicationsTabTitle.
   ///
@@ -435,35 +447,203 @@ abstract class S {
   /// **'Something went wrong'**
   String get root_createProject_undefinedErrorMessage;
 
-  /// No description provided for @common_lists_no_items_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Nothing found'**
-  String get common_lists_no_items_title;
-
-  /// No description provided for @common_lists_loadingConnectionErrorMessage.
+  /// No description provided for @root_profile_connectionErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'No internet connection'**
-  String get common_lists_loadingConnectionErrorMessage;
+  String get root_profile_connectionErrorMessage;
 
-  /// No description provided for @common_lists_loadingUndefinedErrorMessageTitle.
+  /// No description provided for @root_profile_undefinedErrorMessageTitle.
   ///
   /// In en, this message translates to:
   /// **'Something went wrong'**
-  String get common_lists_loadingUndefinedErrorMessageTitle;
+  String get root_profile_undefinedErrorMessageTitle;
 
-  /// No description provided for @common_lists_loadingUndefinedErrorMessageSubtitle.
+  /// No description provided for @root_profile_undefinedErrorMessageSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Technical error, we are solving the issue'**
-  String get common_lists_loadingUndefinedErrorMessageSubtitle;
+  String get root_profile_undefinedErrorMessageSubtitle;
 
-  /// No description provided for @common_lists_loadingTryAgainButtonText.
+  /// No description provided for @root_profile_tryAgainButtonText.
   ///
   /// In en, this message translates to:
   /// **'Try again'**
-  String get common_lists_loadingTryAgainButtonText;
+  String get root_profile_tryAgainButtonText;
+
+  /// No description provided for @root_profile_emailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail'**
+  String get root_profile_emailTitle;
+
+  /// No description provided for @root_profile_fullNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get root_profile_fullNameTitle;
+
+  /// No description provided for @root_profile_facultyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Faculty'**
+  String get root_profile_facultyTitle;
+
+  /// No description provided for @root_profile_facultyNotSetText.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_profile_facultyNotSetText;
+
+  /// No description provided for @root_profile_bioTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About me'**
+  String get root_profile_bioTitle;
+
+  /// No description provided for @root_profile_bioNotSetText.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_profile_bioNotSetText;
+
+  /// No description provided for @root_profile_categoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get root_profile_categoriesTitle;
+
+  /// No description provided for @root_profile_categoriesNotSetText.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_profile_categoriesNotSetText;
+
+  /// No description provided for @root_profile_logoutButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get root_profile_logoutButtonText;
+
+  /// No description provided for @root_profileEditing_connectionErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get root_profileEditing_connectionErrorMessage;
+
+  /// No description provided for @root_profileEditing_undefinedErrorMessageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get root_profileEditing_undefinedErrorMessageTitle;
+
+  /// No description provided for @root_profileEditing_undefinedErrorMessageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical error, we are solving the issue'**
+  String get root_profileEditing_undefinedErrorMessageSubtitle;
+
+  /// No description provided for @root_profileEditing_tryAgainButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get root_profileEditing_tryAgainButtonText;
+
+  /// No description provided for @root_profileEditing_emailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail'**
+  String get root_profileEditing_emailTitle;
+
+  /// No description provided for @root_profileEditing_emailInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail'**
+  String get root_profileEditing_emailInputHint;
+
+  /// No description provided for @root_profileEditing_fullNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get root_profileEditing_fullNameTitle;
+
+  /// No description provided for @root_profileEditing_fullNameInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get root_profileEditing_fullNameInputHint;
+
+  /// No description provided for @root_profileEditing_facultyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Faculty'**
+  String get root_profileEditing_facultyTitle;
+
+  /// No description provided for @root_profileEditing_facultyNotSetText.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_profileEditing_facultyNotSetText;
+
+  /// No description provided for @root_profileEditing_bioTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About me'**
+  String get root_profileEditing_bioTitle;
+
+  /// No description provided for @root_profileEditing_bioNotSetText.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_profileEditing_bioNotSetText;
+
+  /// No description provided for @root_profileEditing_categoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get root_profileEditing_categoriesTitle;
+
+  /// No description provided for @root_profileEditing_categoriesInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Start typing...'**
+  String get root_profileEditing_categoriesInputHint;
+
+  /// No description provided for @root_profileEditing_submitButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get root_profileEditing_submitButtonText;
+
+  /// No description provided for @common_lists_loading_noItemsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get common_lists_loading_noItemsMessage;
+
+  /// No description provided for @common_lists_loading_connectionErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get common_lists_loading_connectionErrorMessage;
+
+  /// No description provided for @common_lists_loading_undefinedErrorMessageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get common_lists_loading_undefinedErrorMessageTitle;
+
+  /// No description provided for @common_lists_loading_undefinedErrorMessageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical error, we are solving the issue'**
+  String get common_lists_loading_undefinedErrorMessageSubtitle;
+
+  /// No description provided for @common_lists_loading_tryAgainButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get common_lists_loading_tryAgainButtonText;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

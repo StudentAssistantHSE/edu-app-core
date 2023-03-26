@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_ui_components/src/icons/custom_icons.dart';
-import 'package:edu_ui_components/src/themes/edu_themes.dart';
-import 'package:edu_ui_components/src/themes/edu_ui_constants.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
+import 'package:edu_ui_components/src/themes/models/referencable/referencable.dart';
 import 'package:edu_ui_components/src/widgets/inputs/suffix_button.dart';
 import 'package:edu_ui_components/src/widgets/inputs/text_input_validation_prefix.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class TextInput extends StatefulWidget {
   final bool? isValid;
   final bool obscure;
   final bool withDelay;
+  final bool errorOccurred;
   final int? maxLines;
   final bool expands;
   final TextAlignVertical? textAlignVertical;
@@ -62,6 +64,7 @@ class TextInput extends StatefulWidget {
     this.isValid,
     this.obscure = false,
     this.withDelay = false,
+    this.errorOccurred = false,
     this.maxLines = 1,
     this.expands = false,
     this.textAlignVertical,
@@ -75,11 +78,14 @@ class TextInput extends StatefulWidget {
 
 class _TextInputState extends State<TextInput> {
   final _controller = TextEditingController();
+  final _focusNode = FocusNode();
   final _validationHelperKey = GlobalKey<TextInputValidationPrefixState>();
   late bool _obscure = widget.obscure;
   late bool _showSuffix = widget.suffixType.isObscure;
 
   Timer? _delayTimer;
+
+  FocusNode get _effectiveFocusNode => widget.focusNode ?? _focusNode;
 
   TextEditingController get _effectiveController => widget.controller ?? _controller;
 
@@ -96,6 +102,7 @@ class _TextInputState extends State<TextInput> {
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     _delayTimer?.cancel();
     super.dispose();
   }
@@ -156,48 +163,120 @@ class _TextInputState extends State<TextInput> {
       );
     }
 
-    final theme = Theme.of(context);
+    final theme = EduTheme.of(context);
 
-    return TextField(
-      enabled: widget.enabled,
-      textInputAction: widget.textInputAction,
-      keyboardType: widget.keyboardType,
-      inputFormatters: formatter == null ? null : [formatter],
-      controller: _effectiveController,
-      onChanged: (value) {
-        _delayTimer?.cancel();
-        if (widget.withDelay) {
-          _delayTimer = Timer(EduUiConstants.inputTimeoutDuration, () => _handleOnChanged(value));
-        } else {
-          _handleOnChanged(value);
-        }
+    final backgroundColor = theme.textInputTheme.backgroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final focusedBackgroundColor = theme.textInputTheme.focusedBackgroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final errorBackgroundColor = theme.textInputTheme.errorBackgroundColor
+        .resolveColorScheme(theme.colorScheme);
+
+    final foregroundColor = theme.textInputTheme.foregroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final enteredForegroundColor = theme.textInputTheme.enteredForegroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final errorForegroundColor = theme.textInputTheme.errorForegroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final disabledForegroundColor = theme.textInputTheme.disabledForegroundColor
+        .resolveColorScheme(theme.colorScheme);
+
+    final hintStyle = theme.textInputTheme.hintStyle
+        .resolveTextTheme(theme.textTheme).copyWith(
+          color: widget.enabled
+              ? (widget.errorOccurred
+              ? errorForegroundColor
+              : foregroundColor)
+              : disabledForegroundColor,
+        );
+    final textStyle = theme.textInputTheme.textStyle
+        .resolveTextTheme(theme.textTheme).copyWith(
+          color: widget.enabled
+              ? (widget.errorOccurred
+              ? errorForegroundColor
+              : enteredForegroundColor)
+              : disabledForegroundColor,
+        );
+
+    return AnimatedBuilder(
+      animation: _effectiveFocusNode,
+      builder: (context, child) {
+        final transition = (_effectiveFocusNode.hasFocus
+            ? theme.textInputTheme.focusedTransition
+            : theme.textInputTheme.unfocusedTransition)
+            .resolveTransitionsTheme(theme.transitionsTheme);
+        return AnimatedContainer(
+          duration: transition.duration,
+          curve: transition.curve,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(theme.textInputTheme.borderRadius),
+            color: widget.errorOccurred
+                ? errorBackgroundColor
+                : _effectiveFocusNode.hasFocus
+                ? focusedBackgroundColor
+                : backgroundColor,
+          ),
+          child: child,
+        );
       },
-      obscureText: _obscure,
-      maxLength: widget.maxLength,
-      style: theme.textTheme.bodyMedium?.copyWith(
-        color: widget.enabled ? theme.colorScheme.primary : theme.onSurfaceSwatch.shade200,
+      child: TextField(
+        focusNode: _effectiveFocusNode,
+        enabled: widget.enabled,
+        textInputAction: widget.textInputAction,
+        keyboardType: widget.keyboardType,
+        inputFormatters: formatter == null ? null : [formatter],
+        controller: _effectiveController,
+        onChanged: (value) {
+          _delayTimer?.cancel();
+          if (widget.withDelay) {
+            _delayTimer = Timer(theme.textInputTheme.timeoutDuration, () => _handleOnChanged(value));
+          } else {
+            _handleOnChanged(value);
+          }
+        },
+        obscureText: _obscure,
+        maxLength: widget.maxLength,
+        style: textStyle,
+        autofocus: widget.autofocus,
+        cursorColor: textStyle.color,
+        decoration: InputDecoration(
+          contentPadding: theme.textInputTheme.padding,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.errorOccurred ? errorForegroundColor : Colors.transparent),
+            borderRadius: BorderRadius.circular(theme.textInputTheme.borderRadius),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.errorOccurred ? errorForegroundColor : Colors.transparent),
+            borderRadius: BorderRadius.circular(theme.textInputTheme.borderRadius),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.errorOccurred ? errorForegroundColor : Colors.transparent),
+            borderRadius: BorderRadius.circular(theme.textInputTheme.borderRadius),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.errorOccurred ? errorForegroundColor : enteredForegroundColor),
+            borderRadius: BorderRadius.circular(theme.textInputTheme.borderRadius),
+          ),
+          suffixIconColor: textStyle.color,
+          prefixIconColor: textStyle.color,
+          counterText: '',
+          suffixIcon: _showSuffix ? suffix : null,
+          prefixIcon: isValid == null
+              ? null
+              : TextInputValidationPrefix(
+                  key: _validationHelperKey,
+                  onPressed: widget.onValidationPrefixPressed,
+                  isValid: isValid,
+                  enabled: widget.enabled,
+                ),
+          hintStyle: hintStyle,
+          hintText: widget.hint,
+        ),
+        autocorrect: widget.autocorrect,
+        autofillHints: widget.enabled ? widget.autofillHints : null,
+        onSubmitted: widget.onSubmitted,
+        magnifierConfiguration: TextMagnifierConfiguration.disabled,
       ),
-      autofocus: widget.autofocus,
-      decoration: InputDecoration(
-        counterText: '',
-        suffixIcon: _showSuffix ? suffix : null,
-        prefixIcon: isValid == null
-            ? null
-            : TextInputValidationPrefix(
-                key: _validationHelperKey,
-                onPressed: widget.onValidationPrefixPressed,
-                isValid: isValid,
-                enabled: widget.enabled,
-              ),
-        hintText: widget.hint,
-      ),
-      autocorrect: widget.autocorrect,
-      autofillHints: widget.enabled ? widget.autofillHints : null,
-      onSubmitted: widget.onSubmitted,
-      maxLines: widget.maxLines,
-      expands: widget.expands,
-      textAlignVertical: widget.textAlignVertical,
-      focusNode: widget.focusNode,
     );
   }
 

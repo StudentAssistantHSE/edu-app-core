@@ -21,7 +21,6 @@ class RegistrationState extends Equatable {
   final FullNameField fullName;
   final PasswordField password;
   final RepeatedPasswordField repeatedPassword;
-  final FormzStatus fieldsStatus;
   final NotNullObjectWrapper<String> resultToken;
 
   bool get isSuccess => status.isSuccess;
@@ -34,7 +33,6 @@ class RegistrationState extends Equatable {
     fullName,
     password,
     repeatedPassword,
-    fieldsStatus,
     resultToken,
   ];
 
@@ -44,7 +42,6 @@ class RegistrationState extends Equatable {
     required this.fullName,
     required this.password,
     required this.repeatedPassword,
-    required this.fieldsStatus,
     required this.resultToken,
   });
 
@@ -54,7 +51,6 @@ class RegistrationState extends Equatable {
     fullName = const FullNameField.pure(),
     password = const PasswordField.pure(),
     repeatedPassword = const RepeatedPasswordField.pure(),
-    fieldsStatus = FormzStatus.pure,
     resultToken = const NotNullObjectWrapper(null);
 
   RegistrationState copyWith({
@@ -63,7 +59,6 @@ class RegistrationState extends Equatable {
     FullNameField? fullName,
     PasswordField? password,
     RepeatedPasswordField? repeatedPassword,
-    FormzStatus? fieldsStatus,
     NotNullObjectWrapper<String>? resultToken,
   }) => RegistrationState._(
     status: status ?? this.status,
@@ -71,7 +66,6 @@ class RegistrationState extends Equatable {
     fullName: fullName ?? this.fullName,
     password: password ?? this.password,
     repeatedPassword: repeatedPassword ?? this.repeatedPassword,
-    fieldsStatus: fieldsStatus ?? this.fieldsStatus,
     resultToken: resultToken ?? this.resultToken,
   );
 }

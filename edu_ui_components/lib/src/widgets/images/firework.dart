@@ -1,35 +1,11 @@
 import 'package:edu_ui_components/assets/assets.dart';
-import 'package:edu_ui_components/src/themes/edu_themes.dart';
-import 'package:flutter/material.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
+import 'package:edu_ui_components/src/widgets/images/edu_image.dart';
+import 'package:flutter/foundation.dart';
 
-enum FireworkStyle {
-  onPrimary,
-  primary300,
-}
-
-class Firework extends StatelessWidget {
-  final FireworkStyle style;
-
-  const Firework({ this.style = FireworkStyle.onPrimary, Key? key }) : super(key: key);
-
+class Firework extends EduImage {
   @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final Color color;
-    switch (style) {
-      case FireworkStyle.onPrimary:
-        color = colorScheme.onPrimary;
-        break;
-      case FireworkStyle.primary300:
-        color = colorScheme.primarySwatch.shade300;
-        break;
-    }
+  String get path => Assets.firework;
 
-    return Image.asset(
-      Assets.firework,
-      fit: BoxFit.contain,
-      package: Assets.packageName,
-      color: color,
-    );
-  }
+  const Firework({ ColorSchemeReference? color, Key? key }) : super(color: color, useColor: true, key: key);
 }

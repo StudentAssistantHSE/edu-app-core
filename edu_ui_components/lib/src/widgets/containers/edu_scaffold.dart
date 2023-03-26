@@ -1,3 +1,5 @@
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:edu_ui_components/src/widgets/containers/edu_app_bar.dart';
 import 'package:edu_ui_components/src/widgets/containers/wave_app_bar.dart';
 import 'package:flutter/material.dart' hide IconButton;
@@ -57,15 +59,16 @@ class EduScaffold extends StatelessWidget {
       );
     }
 
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = EduTheme.of(context);
     return Scaffold(
+      backgroundColor: theme.scaffoldTheme.backgroundColor.resolveColorScheme(theme.colorScheme),
       extendBodyBehindAppBar: waveAppBarSettings != null,
       appBar: waveAppBarSettings != null ? EduAppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: colorScheme.onPrimary,
+        backgroundColor: ColorSchemeReference.transparent,
+        foregroundColor: ColorSchemeReference.themeMain,
         leading: waveAppBarSettings?.leading,
         automaticallyImplyLeading: waveAppBarSettings?.automaticallyApplyLeading ?? true,
-        showBorderOnScroll: false,
+        bottomBorder: EduAppBarBottomBorderType.none,
       ) : appBar,
       floatingActionButton: floatingActionButton,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

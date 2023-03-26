@@ -5,7 +5,6 @@ class Navigation {
   final GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();
 
   GlobalKey<NavigatorState> get navigationKey => _navigationKey;
-  bool get locked => _locked;
 
   bool _locked = false;
 
@@ -20,72 +19,78 @@ class Navigation {
   NavigatorState? parent() =>
       _navigationKey.currentContext?.findAncestorStateOfType<NavigatorState>();
 
-  void lock() => _locked = true;
-  void unlock() => _locked = false;
+  Future<T?> push<T extends Object?>(Route<T> route) =>
+      _navigationKey.state.push(route);
 
-  Future<T?>? push<T extends Object?>(Route<T> route) => _locked
-      ? null
-      : _navigationKey.state.push(route);
+  Future<T?> pushReplacement<T extends Object?, TO extends Object?>(
+    Route<T> newRoute, {
+    TO? result,
+  }) => _navigationKey.state.pushReplacement(newRoute, result: result);
 
-  Future<T?>? pushReplacement<T extends Object?, TO extends Object?>(
-      Route<T> newRoute, {
-        TO? result,
-      }) => _locked
-      ? null
-      : _navigationKey.state.pushReplacement(newRoute, result: result);
+  Future<T?> pushAndRemoveUntil<T extends Object?>(
+    Route<T> newRoute,
+    RoutePredicate predicate,
+  ) => _navigationKey.state.pushAndRemoveUntil(newRoute, predicate);
 
-  Future<T?>? pushAndRemoveUntil<T extends Object?>(
-      Route<T> newRoute,
-      RoutePredicate predicate,
-      ) => _locked
-      ? null
-      : _navigationKey.state.pushAndRemoveUntil(newRoute, predicate);
+  Future<T?> pushNamed<T extends Object?>(
+    String routeName, {
+    Object? arguments,
+  }) => _navigationKey.state.pushNamed(routeName, arguments: arguments);
 
-  Future<T?>? pushNamed<T extends Object?>(
-      String routeName, {
-        Object? arguments,
-      }) => _locked
-      ? null
-      : _navigationKey.state.pushNamed(routeName, arguments: arguments);
-
-  Future<T?>? pushReplacementNamed<T extends Object?, TO extends Object?>(
-      String routeName, {
-        TO? result,
-        Object? arguments,
-      }) => _locked
-      ? null
-      : _navigationKey.state.pushReplacementNamed(
+  Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>(
+    String routeName, {
+    TO? result,
+    Object? arguments,
+  }) => _navigationKey.state.pushReplacementNamed(
     routeName,
     result: result,
     arguments: arguments,
   );
 
-  Future<T?>? pushNamedAndRemoveUntil<T extends Object?>(
-      String newRouteName,
-      RoutePredicate predicate, {
-        Object? arguments,
-      }) => _locked
-      ? null
-      : _navigationKey.state.pushNamedAndRemoveUntil(
+  Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
+    String newRouteName,
+    RoutePredicate predicate, {
+    Object? arguments,
+  }) => _navigationKey.state.pushNamedAndRemoveUntil(
     newRouteName,
     predicate,
     arguments: arguments,
   );
 
-  void pop<T extends Object?>([T? result]) => _locked
-      ? null
-      : _navigationKey.state.pop(result);
+  void pop<T extends Object?>([T? result]) =>
+      _navigationKey.state.pop(result);
 
-  void popUntil(bool Function(Route<dynamic>) predicate) => _locked
-      ? null
-      : _navigationKey.state.popUntil(predicate);
+  void popUntil(bool Function(Route<dynamic>) predicate) =>
+      _navigationKey.state.popUntil(predicate);
 
-  Future<bool> maybePop<T extends Object?>([T? result]) async {
-    if (locked) {
-      return true;
+  Future<bool> maybePop<T extends Object?>([T? result]) =>
+      _navigationKey.state.maybePop(result);
+
+  bool canPop() => _navigationKey.state.canPop();
+
+  void lockRoute() {
+    if (_locked) {
+      return;
     }
-    return _navigationKey.state.maybePop(result);
+    final route = ModalRoute.of(_navigationKey.context);
+    if (route == null) {
+      return;
+    }
+    _locked = true;
+    route.addScopedWillPopCallback(_lockerCallback);
   }
 
-  bool canPop() => !_locked && _navigationKey.state.canPop();
+  void unlockRoute() {
+    if (!_locked) {
+      return;
+    }
+    final route = ModalRoute.of(_navigationKey.context);
+    if (route == null) {
+      return;
+    }
+    _locked = false;
+    route.removeScopedWillPopCallback(_lockerCallback);
+  }
+
+  Future<bool> _lockerCallback() async => !(await _navigationKey.state.maybePop());
 }

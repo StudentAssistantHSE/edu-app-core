@@ -7,12 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum _InputState {
   disabled,
-  canNotSubmit,
-  canSubmit;
+  error,
+  success;
 }
 
 extension _InputStateX on _InputState {
-  bool get canSubmit => this == _InputState.canSubmit;
+  bool get isError => this == _InputState.error;
   bool get enabled => this != _InputState.disabled;
 }
 
@@ -56,13 +56,14 @@ class InputWidget<T extends Bloc<Event, State>, Event, State> extends StatelessW
 
         initialValue: controller.initialValue(state),
         onChanged: inputState.enabled ? _callbackBuilder(context, controller.onChangedEventBuilder) : null,
-        onSubmitted: inputState.canSubmit ? _callbackBuilder(context, controller.onSubmittedEventBuilder) : null,
+        onSubmitted: _callbackBuilder(context, controller.onSubmittedEventBuilder),
         hint: hint,
         enabled: inputState.enabled,
         onValidationPrefixPressed: controller.isValidationPrefixTappable
             ? () => controller.onValidationPrefixPressed(context, context.read<T>().state)
             : null,
         isValid: isValid,
+        errorOccurred: inputState.isError,
       );
     },
   );
@@ -72,11 +73,11 @@ class InputWidget<T extends Bloc<Event, State>, Event, State> extends StatelessW
     if (disabled) {
       return _InputState.disabled;
     }
-    final canSubmit =  controller.canSubmitSelector(state);
-    if (canSubmit) {
-      return _InputState.canSubmit;
+    final error = controller.errorSelector(state);
+    if (error) {
+      return _InputState.error;
     }
-    return _InputState.canNotSubmit;
+    return _InputState.success;
   }
 
   ValueChanged<String>? _callbackBuilder(

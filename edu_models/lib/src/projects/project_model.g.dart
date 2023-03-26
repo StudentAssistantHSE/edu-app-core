@@ -12,10 +12,11 @@ ProjectModel _$ProjectModelFromJson(Map<String, dynamic> json) => ProjectModel(
       description: json['description'] as String,
       contacts: json['contacts'] as String?,
       isClosed: json['isClosed'] as bool,
-      userFullName: json['userFullName'] as String,
-      categories: (json['categories'] as List<dynamic>)
-          .map((e) => CategoryModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      userFullName: json['userFullName'] as String?,
+      categories: (json['categories'] as List<dynamic>?)
+              ?.map((e) => CategoryModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$ProjectModelToJson(ProjectModel instance) =>

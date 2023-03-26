@@ -1,8 +1,8 @@
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:equatable/equatable.dart';
-import 'package:feature_process_application_project/feature_process_application.dart';
-import 'package:feature_process_application_project/src/repository/process_application_result.dart';
+import 'package:feature_process_application/feature_process_application.dart';
+import 'package:feature_process_application/src/repository/process_application_result.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'process_application_event.dart';
@@ -53,7 +53,7 @@ class ProcessApplicationBloc extends Bloc<ProcessApplicationEvent, ProcessApplic
           emit(state.copyWith(status: ProcessApplicationStatus.notAuthorized));
           break;
       }
-    } on Exception catch (e) {
+    } on Object catch (e) {
       emit(state.copyWith(
         status: e is DioError ? ProcessApplicationStatus.connectionError : ProcessApplicationStatus.undefinedError,
       ));

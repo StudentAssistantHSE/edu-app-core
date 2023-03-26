@@ -13,7 +13,7 @@ abstract class InputStateController<Event, State> {
   String? initialValue(State state) => null;
   String? hintSelector(S translations) => null;
   bool disabledSelector(State state) => false;
-  bool canSubmitSelector(State state) => true;
+  bool errorSelector(State state) => false;
 
   bool? isValidSelector(State state) => null;
 }

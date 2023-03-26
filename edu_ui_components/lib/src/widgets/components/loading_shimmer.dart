@@ -1,8 +1,7 @@
-import 'package:edu_ui_components/src/themes/edu_themes.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-
-const _shimmerDuration = Duration(seconds: 5);
 
 class LoadingShimmer extends StatelessWidget {
   final Widget child;
@@ -14,11 +13,11 @@ class LoadingShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = EduTheme.of(context);
     return Shimmer.fromColors(
-      baseColor: colorScheme.onSurfaceSwatch.shade50,
-      highlightColor: colorScheme.onSurfaceSwatch.shade300,
-      period: _shimmerDuration,
+      baseColor: theme.loadingShimmerTheme.baseColor.resolveColorScheme(theme.colorScheme),
+      highlightColor: theme.loadingShimmerTheme.highlightColor.resolveColorScheme(theme.colorScheme),
+      period: theme.loadingShimmerTheme.duration,
       child: child,
     );
   }
@@ -47,11 +46,11 @@ class _KeepAliveLoadingShimmerState extends State<KeepAliveLoadingShimmer> {
       return _Proxy(child: widget.child, key: _key);
     }
 
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = EduTheme.of(context);
     return Shimmer.fromColors(
-      baseColor: colorScheme.onSurfaceSwatch.shade50,
-      highlightColor: colorScheme.onSurfaceSwatch.shade300,
-      period: _shimmerDuration,
+      baseColor: theme.loadingShimmerTheme.baseColor.resolveColorScheme(theme.colorScheme),
+      highlightColor: theme.loadingShimmerTheme.highlightColor.resolveColorScheme(theme.colorScheme),
+      period: theme.loadingShimmerTheme.duration,
       child: _Proxy(
         key: _key,
         child: widget.child,

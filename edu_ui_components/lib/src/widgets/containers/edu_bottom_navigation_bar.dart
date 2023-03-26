@@ -1,14 +1,23 @@
-import 'package:edu_ui_components/src/themes/edu_shadows.dart';
-import 'package:edu_ui_components/src/themes/edu_themes.dart';
+import 'package:edu_ui_components/src/themes/edu_theme.dart';
+import 'package:edu_ui_components/src/themes/models/models.dart';
 import 'package:flutter/material.dart';
 
-class EduBottomNavigationBar extends StatelessWidget implements PreferredSizeWidget {
+class EduBottomNavigationBarItem {
+  final String label;
+  final Widget icon;
+  final Widget? activeIcon;
+
+  const EduBottomNavigationBarItem({
+    required this.label,
+    required this.icon,
+    this.activeIcon,
+  });
+}
+
+class EduBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int index) onTap;
-  final List<BottomNavigationBarItem> items;
-
-  @override
-  Size get preferredSize => const Size.fromHeight(60.0);
+  final List<EduBottomNavigationBarItem> items;
 
   const EduBottomNavigationBar({
     required this.currentIndex,
@@ -20,20 +29,35 @@ class EduBottomNavigationBar extends StatelessWidget implements PreferredSizeWid
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = EduTheme.of(context);
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+
+    final backgroundColor = theme.bottomNavigationBarTheme.backgroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final activeBackgroundColor = theme.bottomNavigationBarTheme.activeBackgroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final labelStyle = theme.bottomNavigationBarTheme.labelStyle
+        .resolveTextTheme(theme.textTheme);
+    final foregroundColor = theme.bottomNavigationBarTheme.foregroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final activeForegroundColor = theme.bottomNavigationBarTheme.activeForegroundColor
+        .resolveColorScheme(theme.colorScheme);
+    final shadow = theme.bottomNavigationBarTheme.shadow
+        .resolveShadowsTheme(theme.shadowsTheme);
+    final indicatorColor = theme.bottomNavigationBarTheme.indicatorColor
+        .resolveColorScheme(theme.colorScheme);
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        boxShadow: EduShadows.elevatedShadow(theme.onSurfaceSwatch),
-        color: theme.colorScheme.surface,
+        color: backgroundColor,
+        boxShadow: shadow,
       ),
       child: SizedBox(
-        height: preferredSize.height + bottomPadding,
+        height: theme.bottomNavigationBarTheme.height + bottomPadding,
         child: Row(
           children: List.generate(items.length, (index) {
             final item = items[index];
-            final isSelected = currentIndex == index;
+            final isActive = currentIndex == index;
 
             return Expanded(
               child: GestureDetector(
@@ -41,31 +65,46 @@ class EduBottomNavigationBar extends StatelessWidget implements PreferredSizeWid
                 behavior: HitTestBehavior.translucent,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    border: isSelected
+                    border: isActive
                         ? Border(
                             top: BorderSide(
-                              width: 2.0,
-                              color: theme.colorScheme.primary,
+                              width: theme.bottomNavigationBarTheme.indicatorHeight,
+                              color: indicatorColor,
                             ),
                           )
                         : null,
-                    color: isSelected ? theme.primarySwatch.shade50 : theme.colorScheme.surface,
+                    color: isActive ? activeBackgroundColor : backgroundColor,
                   ),
-                  child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 8.0, bottom: bottomPadding + 8.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        if (isSelected) item.activeIcon else item.icon,
-                        if (item.label != null) ...[
-                          const SizedBox(height: 4.0),
-                          Text(
-                            item.label!,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: isSelected ? theme.colorScheme.primary : theme.onSurfaceSwatch.shade200,
+                        Expanded(
+                          child: Center(
+                            child: IconTheme(
+                              data: IconThemeData(
+                                color: isActive
+                                    ? activeForegroundColor
+                                    : foregroundColor,
+                                size: theme.bottomNavigationBarTheme.iconSize,
+                              ),
+                              child: isActive ? (item.activeIcon ?? item.icon) : item.icon,
                             ),
                           ),
-                        ],
-                        SizedBox(height: bottomPadding),
+                        ),
+                        const SizedBox(height: 4),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              item.label,
+                              style: labelStyle.copyWith(
+                                color: isActive ? activeForegroundColor : foregroundColor,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
