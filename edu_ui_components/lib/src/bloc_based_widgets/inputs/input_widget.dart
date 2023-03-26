@@ -51,6 +51,7 @@ class InputWidget<T extends Bloc<Event, State>, Event, State> extends StatelessW
         obscure: settings.obscure,
         withDelay: settings.withDelay,
         maxLines: settings.maxLines,
+        minLines: settings.minLines,
         expands: settings.expands,
         textAlignVertical: settings.textAlignVertical,
 

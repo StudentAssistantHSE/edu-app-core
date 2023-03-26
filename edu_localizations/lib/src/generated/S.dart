@@ -315,6 +315,132 @@ abstract class S {
   /// **'Recommendations'**
   String get root_projects_projectCard_recommendationsText;
 
+  /// No description provided for @root_projects_projectCard_datesText.
+  ///
+  /// In en, this message translates to:
+  /// **'Project dates:'**
+  String get root_projects_projectCard_datesText;
+
+  /// No description provided for @root_projects_projectCard_applicationDeadlineText.
+  ///
+  /// In en, this message translates to:
+  /// **'Application deadline:'**
+  String get root_projects_projectCard_applicationDeadlineText;
+
+  /// No description provided for @root_projects_projectCard_employmentTypeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Employment type:'**
+  String get root_projects_projectCard_employmentTypeText;
+
+  /// No description provided for @root_projects_projectCard_territoryText.
+  ///
+  /// In en, this message translates to:
+  /// **'Territory:'**
+  String get root_projects_projectCard_territoryText;
+
+  /// No description provided for @root_projects_projectCard_skillsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Required skills:'**
+  String get root_projects_projectCard_skillsText;
+
+  /// No description provided for @root_projects_projectCard_creditNumberText.
+  ///
+  /// In en, this message translates to:
+  /// **'Credits number:'**
+  String get root_projects_projectCard_creditNumberText;
+
+  /// No description provided for @root_projects_projectCard_campusText.
+  ///
+  /// In en, this message translates to:
+  /// **'Campus:'**
+  String get root_projects_projectCard_campusText;
+
+  /// No description provided for @root_projects_projectCard_projectTypeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Project type:'**
+  String get root_projects_projectCard_projectTypeText;
+
+  /// No description provided for @root_projects_projectCard_participantsNumberTooltipText.
+  ///
+  /// In en, this message translates to:
+  /// **'Participants number'**
+  String get root_projects_projectCard_participantsNumberTooltipText;
+
+  /// No description provided for @root_projects_projectCard_weeklyHoursTooltipText.
+  ///
+  /// In en, this message translates to:
+  /// **'Hours per week'**
+  String get root_projects_projectCard_weeklyHoursTooltipText;
+
+  /// No description provided for @root_projects_projectCard_employmentTypeRemote.
+  ///
+  /// In en, this message translates to:
+  /// **'Remote'**
+  String get root_projects_projectCard_employmentTypeRemote;
+
+  /// No description provided for @root_projects_projectCard_employmentTypeOnSiteWork.
+  ///
+  /// In en, this message translates to:
+  /// **'On site'**
+  String get root_projects_projectCard_employmentTypeOnSiteWork;
+
+  /// No description provided for @root_projects_projectCard_employmentTypeExpeditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Expedition'**
+  String get root_projects_projectCard_employmentTypeExpeditions;
+
+  /// No description provided for @root_projects_projectCard_employmentTypeInternships.
+  ///
+  /// In en, this message translates to:
+  /// **'Internship'**
+  String get root_projects_projectCard_employmentTypeInternships;
+
+  /// No description provided for @root_projects_projectCard_campusTypeMoscow.
+  ///
+  /// In en, this message translates to:
+  /// **'Moscow'**
+  String get root_projects_projectCard_campusTypeMoscow;
+
+  /// No description provided for @root_projects_projectCard_campusTypeNizhniyNovgorod.
+  ///
+  /// In en, this message translates to:
+  /// **'Nizhniy Novgorod'**
+  String get root_projects_projectCard_campusTypeNizhniyNovgorod;
+
+  /// No description provided for @root_projects_projectCard_campusTypePerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Perm'**
+  String get root_projects_projectCard_campusTypePerm;
+
+  /// No description provided for @root_projects_projectCard_campusTypeSaintPetersburg.
+  ///
+  /// In en, this message translates to:
+  /// **'Saint Petersburg'**
+  String get root_projects_projectCard_campusTypeSaintPetersburg;
+
+  /// No description provided for @root_projects_projectCard_projectTypeResearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Research'**
+  String get root_projects_projectCard_projectTypeResearch;
+
+  /// No description provided for @root_projects_projectCard_projectTypeApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get root_projects_projectCard_projectTypeApplication;
+
+  /// No description provided for @root_projects_projectCard_projectTypeService.
+  ///
+  /// In en, this message translates to:
+  /// **'Service'**
+  String get root_projects_projectCard_projectTypeService;
+
   /// No description provided for @root_applications_sentApplicationsTabTitle.
   ///
   /// In en, this message translates to:
@@ -411,11 +537,23 @@ abstract class S {
   /// **'Name'**
   String get root_createProject_nameInputHint;
 
+  /// No description provided for @root_createProject_nameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get root_createProject_nameTitle;
+
   /// No description provided for @root_createProject_descriptionInputHint.
   ///
   /// In en, this message translates to:
   /// **'Description'**
   String get root_createProject_descriptionInputHint;
+
+  /// No description provided for @root_createProject_descriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get root_createProject_descriptionTitle;
 
   /// No description provided for @root_createProject_contactsInputHint.
   ///
@@ -423,17 +561,215 @@ abstract class S {
   /// **'Contacts'**
   String get root_createProject_contactsInputHint;
 
-  /// No description provided for @root_createProject_categoriesText.
+  /// No description provided for @root_createProject_contactsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts'**
+  String get root_createProject_contactsTitle;
+
+  /// No description provided for @root_createProject_startDateInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_startDateInputHint;
+
+  /// No description provided for @root_createProject_startDateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start date'**
+  String get root_createProject_startDateTitle;
+
+  /// No description provided for @root_createProject_endDateInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_endDateInputHint;
+
+  /// No description provided for @root_createProject_endDateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'End date'**
+  String get root_createProject_endDateTitle;
+
+  /// No description provided for @root_createProject_applicationDeadlineInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_applicationDeadlineInputHint;
+
+  /// No description provided for @root_createProject_applicationDeadlineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application deadline'**
+  String get root_createProject_applicationDeadlineTitle;
+
+  /// No description provided for @root_createProject_employmentTypeInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_employmentTypeInputHint;
+
+  /// No description provided for @root_createProject_employmentTypeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Employment type'**
+  String get root_createProject_employmentTypeTitle;
+
+  /// No description provided for @root_createProject_territoryInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_territoryInputHint;
+
+  /// No description provided for @root_createProject_territoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Territory'**
+  String get root_createProject_territoryTitle;
+
+  /// No description provided for @root_createProject_skillsInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_skillsInputHint;
+
+  /// No description provided for @root_createProject_skillsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Required skills'**
+  String get root_createProject_skillsTitle;
+
+  /// No description provided for @root_createProject_creditNumberInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_creditNumberInputHint;
+
+  /// No description provided for @root_createProject_creditNumberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Credits number'**
+  String get root_createProject_creditNumberTitle;
+
+  /// No description provided for @root_createProject_campusInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_campusInputHint;
+
+  /// No description provided for @root_createProject_campusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Campus'**
+  String get root_createProject_campusTitle;
+
+  /// No description provided for @root_createProject_participantsNumberInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_participantsNumberInputHint;
+
+  /// No description provided for @root_createProject_participantsNumberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Participants number'**
+  String get root_createProject_participantsNumberTitle;
+
+  /// No description provided for @root_createProject_projectTypeInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_projectTypeInputHint;
+
+  /// No description provided for @root_createProject_projectTypeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Project type'**
+  String get root_createProject_projectTypeTitle;
+
+  /// No description provided for @root_createProject_weeklyHoursInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get root_createProject_weeklyHoursInputHint;
+
+  /// No description provided for @root_createProject_weeklyHoursNumberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hours per week'**
+  String get root_createProject_weeklyHoursNumberTitle;
+
+  /// No description provided for @root_createProject_categoriesTitle.
   ///
   /// In en, this message translates to:
   /// **'Categories'**
-  String get root_createProject_categoriesText;
+  String get root_createProject_categoriesTitle;
 
-  /// No description provided for @root_createProject_categoriesInputHint.
+  /// No description provided for @root_createProject_employmentTypeRemote.
   ///
   /// In en, this message translates to:
-  /// **'Start typing...'**
-  String get root_createProject_categoriesInputHint;
+  /// **'Remote'**
+  String get root_createProject_employmentTypeRemote;
+
+  /// No description provided for @root_createProject_employmentTypeOnSiteWork.
+  ///
+  /// In en, this message translates to:
+  /// **'On site'**
+  String get root_createProject_employmentTypeOnSiteWork;
+
+  /// No description provided for @root_createProject_employmentTypeExpeditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Expedition'**
+  String get root_createProject_employmentTypeExpeditions;
+
+  /// No description provided for @root_createProject_employmentTypeInternships.
+  ///
+  /// In en, this message translates to:
+  /// **'Internship'**
+  String get root_createProject_employmentTypeInternships;
+
+  /// No description provided for @root_createProject_campusTypeMoscow.
+  ///
+  /// In en, this message translates to:
+  /// **'Moscow'**
+  String get root_createProject_campusTypeMoscow;
+
+  /// No description provided for @root_createProject_campusTypeNizhniyNovgorod.
+  ///
+  /// In en, this message translates to:
+  /// **'Nizhniy Novgorod'**
+  String get root_createProject_campusTypeNizhniyNovgorod;
+
+  /// No description provided for @root_createProject_campusTypePerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Perm'**
+  String get root_createProject_campusTypePerm;
+
+  /// No description provided for @root_createProject_campusTypeSaintPetersburg.
+  ///
+  /// In en, this message translates to:
+  /// **'Saint Petersburg'**
+  String get root_createProject_campusTypeSaintPetersburg;
+
+  /// No description provided for @root_createProject_projectTypeResearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Research'**
+  String get root_createProject_projectTypeResearch;
+
+  /// No description provided for @root_createProject_projectTypeApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get root_createProject_projectTypeApplication;
+
+  /// No description provided for @root_createProject_projectTypeService.
+  ///
+  /// In en, this message translates to:
+  /// **'Service'**
+  String get root_createProject_projectTypeService;
 
   /// No description provided for @root_createProject_connectionErrorMessage.
   ///
@@ -525,95 +861,95 @@ abstract class S {
   /// **'Logout'**
   String get root_profile_logoutButtonText;
 
-  /// No description provided for @root_profileEditing_connectionErrorMessage.
+  /// No description provided for @profileEditing_profileEditing_connectionErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'No internet connection'**
-  String get root_profileEditing_connectionErrorMessage;
+  String get profileEditing_profileEditing_connectionErrorMessage;
 
-  /// No description provided for @root_profileEditing_undefinedErrorMessageTitle.
+  /// No description provided for @profileEditing_profileEditing_undefinedErrorMessageTitle.
   ///
   /// In en, this message translates to:
   /// **'Something went wrong'**
-  String get root_profileEditing_undefinedErrorMessageTitle;
+  String get profileEditing_profileEditing_undefinedErrorMessageTitle;
 
-  /// No description provided for @root_profileEditing_undefinedErrorMessageSubtitle.
+  /// No description provided for @profileEditing_profileEditing_undefinedErrorMessageSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Technical error, we are solving the issue'**
-  String get root_profileEditing_undefinedErrorMessageSubtitle;
+  String get profileEditing_profileEditing_undefinedErrorMessageSubtitle;
 
-  /// No description provided for @root_profileEditing_tryAgainButtonText.
+  /// No description provided for @profileEditing_profileEditing_tryAgainButtonText.
   ///
   /// In en, this message translates to:
   /// **'Try again'**
-  String get root_profileEditing_tryAgainButtonText;
+  String get profileEditing_profileEditing_tryAgainButtonText;
 
-  /// No description provided for @root_profileEditing_emailTitle.
+  /// No description provided for @profileEditing_profileEditing_emailTitle.
   ///
   /// In en, this message translates to:
   /// **'E-mail'**
-  String get root_profileEditing_emailTitle;
+  String get profileEditing_profileEditing_emailTitle;
 
-  /// No description provided for @root_profileEditing_emailInputHint.
+  /// No description provided for @profileEditing_profileEditing_emailInputHint.
   ///
   /// In en, this message translates to:
   /// **'E-mail'**
-  String get root_profileEditing_emailInputHint;
+  String get profileEditing_profileEditing_emailInputHint;
 
-  /// No description provided for @root_profileEditing_fullNameTitle.
+  /// No description provided for @profileEditing_profileEditing_fullNameTitle.
   ///
   /// In en, this message translates to:
   /// **'Full name'**
-  String get root_profileEditing_fullNameTitle;
+  String get profileEditing_profileEditing_fullNameTitle;
 
-  /// No description provided for @root_profileEditing_fullNameInputHint.
+  /// No description provided for @profileEditing_profileEditing_fullNameInputHint.
   ///
   /// In en, this message translates to:
   /// **'Full name'**
-  String get root_profileEditing_fullNameInputHint;
+  String get profileEditing_profileEditing_fullNameInputHint;
 
-  /// No description provided for @root_profileEditing_facultyTitle.
+  /// No description provided for @profileEditing_profileEditing_facultyTitle.
   ///
   /// In en, this message translates to:
   /// **'Faculty'**
-  String get root_profileEditing_facultyTitle;
+  String get profileEditing_profileEditing_facultyTitle;
 
-  /// No description provided for @root_profileEditing_facultyNotSetText.
+  /// No description provided for @profileEditing_profileEditing_facultyNotSetText.
   ///
   /// In en, this message translates to:
   /// **'Not specified'**
-  String get root_profileEditing_facultyNotSetText;
+  String get profileEditing_profileEditing_facultyNotSetText;
 
-  /// No description provided for @root_profileEditing_bioTitle.
+  /// No description provided for @profileEditing_profileEditing_bioTitle.
   ///
   /// In en, this message translates to:
   /// **'About me'**
-  String get root_profileEditing_bioTitle;
+  String get profileEditing_profileEditing_bioTitle;
 
-  /// No description provided for @root_profileEditing_bioNotSetText.
+  /// No description provided for @profileEditing_profileEditing_bioNotSetText.
   ///
   /// In en, this message translates to:
   /// **'Not specified'**
-  String get root_profileEditing_bioNotSetText;
+  String get profileEditing_profileEditing_bioNotSetText;
 
-  /// No description provided for @root_profileEditing_categoriesTitle.
+  /// No description provided for @profileEditing_profileEditing_categoriesTitle.
   ///
   /// In en, this message translates to:
   /// **'Skills'**
-  String get root_profileEditing_categoriesTitle;
+  String get profileEditing_profileEditing_categoriesTitle;
 
-  /// No description provided for @root_profileEditing_categoriesInputHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Start typing...'**
-  String get root_profileEditing_categoriesInputHint;
-
-  /// No description provided for @root_profileEditing_submitButtonText.
+  /// No description provided for @profileEditing_profileEditing_submitButtonText.
   ///
   /// In en, this message translates to:
   /// **'Save'**
-  String get root_profileEditing_submitButtonText;
+  String get profileEditing_profileEditing_submitButtonText;
+
+  /// No description provided for @categories_categories_categoriesInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Start typing...'**
+  String get categories_categories_categoriesInputHint;
 
   /// No description provided for @common_lists_loading_noItemsMessage.
   ///

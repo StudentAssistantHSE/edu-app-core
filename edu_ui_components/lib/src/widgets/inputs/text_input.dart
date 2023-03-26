@@ -27,6 +27,7 @@ class TextInput extends StatefulWidget {
   final String? initialValue;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
+  final VoidCallback? onTap;
   final TextInputSuffixType suffixType;
   final String? hint;
   final bool autocorrect;
@@ -41,7 +42,9 @@ class TextInput extends StatefulWidget {
   final bool withDelay;
   final bool errorOccurred;
   final int? maxLines;
+  final int? minLines;
   final bool expands;
+  final bool readOnly;
   final TextAlignVertical? textAlignVertical;
   final FocusNode? focusNode;
 
@@ -55,7 +58,9 @@ class TextInput extends StatefulWidget {
     this.onSubmitted,
     this.suffixType = TextInputSuffixType.empty,
     this.hint,
+    this.onTap,
     this.autocorrect = true,
+    this.readOnly = false,
     this.autofillHints = const [],
     this.inputFormatters,
     this.maxLength,
@@ -66,6 +71,7 @@ class TextInput extends StatefulWidget {
     this.withDelay = false,
     this.errorOccurred = false,
     this.maxLines = 1,
+    this.minLines,
     this.expands = false,
     this.textAlignVertical,
     this.focusNode,
@@ -81,7 +87,7 @@ class _TextInputState extends State<TextInput> {
   final _focusNode = FocusNode();
   final _validationHelperKey = GlobalKey<TextInputValidationPrefixState>();
   late bool _obscure = widget.obscure;
-  late bool _showSuffix = widget.suffixType.isObscure;
+  late bool _showSuffix;
 
   Timer? _delayTimer;
 
@@ -90,17 +96,27 @@ class _TextInputState extends State<TextInput> {
   TextEditingController get _effectiveController => widget.controller ?? _controller;
 
   @override
+  void didUpdateWidget(TextInput oldWidget) {
+    if (widget.errorOccurred) {
+      _effectiveFocusNode.requestFocus();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void initState() {
     if (widget.initialValue != null) {
       _effectiveController.text = widget.initialValue ?? '';
-      _showSuffix = _effectiveController.text.isNotEmpty && widget.suffixType.isClear
-          || widget.suffixType.isObscure;
     }
+    _showSuffix = _effectiveController.text.isNotEmpty && widget.suffixType.isClear
+        || widget.suffixType.isObscure;
+    _effectiveController.addListener(_handleControllerChanges);
     super.initState();
   }
 
   @override
   void dispose() {
+    _effectiveController.removeListener(_handleControllerChanges);
     _controller.dispose();
     _focusNode.dispose();
     _delayTimer?.cancel();
@@ -118,7 +134,7 @@ class _TextInputState extends State<TextInput> {
           onPressed: () {
             _delayTimer?.cancel();
             _effectiveController.clear();
-            _handleOnChanged('');
+            widget.onChanged?.call('');
           },
         );
         break;
@@ -221,6 +237,12 @@ class _TextInputState extends State<TextInput> {
       },
       child: TextField(
         focusNode: _effectiveFocusNode,
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
+        maxLines: widget.maxLines,
+        minLines: widget.minLines,
+        expands: widget.expands,
+        textAlignVertical: widget.textAlignVertical,
         enabled: widget.enabled,
         textInputAction: widget.textInputAction,
         keyboardType: widget.keyboardType,
@@ -229,9 +251,9 @@ class _TextInputState extends State<TextInput> {
         onChanged: (value) {
           _delayTimer?.cancel();
           if (widget.withDelay) {
-            _delayTimer = Timer(theme.textInputTheme.timeoutDuration, () => _handleOnChanged(value));
+            _delayTimer = Timer(theme.textInputTheme.timeoutDuration, () => widget.onChanged?.call(value));
           } else {
-            _handleOnChanged(value);
+            widget.onChanged?.call(value);
           }
         },
         obscureText: _obscure,
@@ -280,12 +302,11 @@ class _TextInputState extends State<TextInput> {
     );
   }
 
-  void _handleOnChanged(String value) {
-    if (value.isNotEmpty && !_showSuffix && widget.suffixType.isClear) {
+  void _handleControllerChanges() {
+    if (_effectiveController.text.isNotEmpty && !_showSuffix && widget.suffixType.isClear) {
       setState(() => _showSuffix = true);
-    } else if (value.isEmpty && _showSuffix && widget.suffixType.isClear) {
+    } else if (_effectiveController.text.isEmpty && _showSuffix && widget.suffixType.isClear) {
       setState(() => _showSuffix = false);
     }
-    widget.onChanged?.call(value);
   }
 }

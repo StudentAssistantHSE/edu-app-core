@@ -16,10 +16,12 @@ extension _InputStateX on _InputState {
 }
 
 class SelectionInputWidget<T extends Bloc<Event, State>, Event, State, K> extends StatelessWidget {
+  final SelectionInputSuffixType suffixType;
   final SelectionInputStateController<Event, State, K> controller;
 
   const SelectionInputWidget({
     required this.controller,
+    this.suffixType = SelectionInputSuffixType.empty,
     Key? key,
   }) : super(key: key);
 
@@ -45,6 +47,7 @@ class SelectionInputWidget<T extends Bloc<Event, State>, Event, State, K> extend
         items: items,
         selectedItem: selectedItem,
         hint: hint,
+        suffixType: suffixType,
         onChanged: inputState.disabled ? null : (value) {
           final event = controller.eventBuilder(context, value);
           if (event != null) {

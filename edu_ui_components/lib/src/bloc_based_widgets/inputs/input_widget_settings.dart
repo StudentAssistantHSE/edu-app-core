@@ -13,6 +13,7 @@ abstract class InputWidgetSettings {
   TextInputType? get keyboardType => null;
   int? get maxLength => null;
   int? get maxLines => 1;
+  int? get minLines => null;
   bool get obscure => false;
   bool get withDelay => false;
   bool get expands => false;

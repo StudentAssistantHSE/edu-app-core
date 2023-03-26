@@ -118,6 +118,69 @@ class SEn extends S {
   String get root_projects_projectCard_recommendationsText => 'Recommendations';
 
   @override
+  String get root_projects_projectCard_datesText => 'Project dates:';
+
+  @override
+  String get root_projects_projectCard_applicationDeadlineText => 'Application deadline:';
+
+  @override
+  String get root_projects_projectCard_employmentTypeText => 'Employment type:';
+
+  @override
+  String get root_projects_projectCard_territoryText => 'Territory:';
+
+  @override
+  String get root_projects_projectCard_skillsText => 'Required skills:';
+
+  @override
+  String get root_projects_projectCard_creditNumberText => 'Credits number:';
+
+  @override
+  String get root_projects_projectCard_campusText => 'Campus:';
+
+  @override
+  String get root_projects_projectCard_projectTypeText => 'Project type:';
+
+  @override
+  String get root_projects_projectCard_participantsNumberTooltipText => 'Participants number';
+
+  @override
+  String get root_projects_projectCard_weeklyHoursTooltipText => 'Hours per week';
+
+  @override
+  String get root_projects_projectCard_employmentTypeRemote => 'Remote';
+
+  @override
+  String get root_projects_projectCard_employmentTypeOnSiteWork => 'On site';
+
+  @override
+  String get root_projects_projectCard_employmentTypeExpeditions => 'Expedition';
+
+  @override
+  String get root_projects_projectCard_employmentTypeInternships => 'Internship';
+
+  @override
+  String get root_projects_projectCard_campusTypeMoscow => 'Moscow';
+
+  @override
+  String get root_projects_projectCard_campusTypeNizhniyNovgorod => 'Nizhniy Novgorod';
+
+  @override
+  String get root_projects_projectCard_campusTypePerm => 'Perm';
+
+  @override
+  String get root_projects_projectCard_campusTypeSaintPetersburg => 'Saint Petersburg';
+
+  @override
+  String get root_projects_projectCard_projectTypeResearch => 'Research';
+
+  @override
+  String get root_projects_projectCard_projectTypeApplication => 'Application';
+
+  @override
+  String get root_projects_projectCard_projectTypeService => 'Service';
+
+  @override
   String get root_applications_sentApplicationsTabTitle => 'Outgoing';
 
   @override
@@ -166,16 +229,121 @@ class SEn extends S {
   String get root_createProject_nameInputHint => 'Name';
 
   @override
+  String get root_createProject_nameTitle => 'Name';
+
+  @override
   String get root_createProject_descriptionInputHint => 'Description';
+
+  @override
+  String get root_createProject_descriptionTitle => 'Description';
 
   @override
   String get root_createProject_contactsInputHint => 'Contacts';
 
   @override
-  String get root_createProject_categoriesText => 'Categories';
+  String get root_createProject_contactsTitle => 'Contacts';
 
   @override
-  String get root_createProject_categoriesInputHint => 'Start typing...';
+  String get root_createProject_startDateInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_startDateTitle => 'Start date';
+
+  @override
+  String get root_createProject_endDateInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_endDateTitle => 'End date';
+
+  @override
+  String get root_createProject_applicationDeadlineInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_applicationDeadlineTitle => 'Application deadline';
+
+  @override
+  String get root_createProject_employmentTypeInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_employmentTypeTitle => 'Employment type';
+
+  @override
+  String get root_createProject_territoryInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_territoryTitle => 'Territory';
+
+  @override
+  String get root_createProject_skillsInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_skillsTitle => 'Required skills';
+
+  @override
+  String get root_createProject_creditNumberInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_creditNumberTitle => 'Credits number';
+
+  @override
+  String get root_createProject_campusInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_campusTitle => 'Campus';
+
+  @override
+  String get root_createProject_participantsNumberInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_participantsNumberTitle => 'Participants number';
+
+  @override
+  String get root_createProject_projectTypeInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_projectTypeTitle => 'Project type';
+
+  @override
+  String get root_createProject_weeklyHoursInputHint => 'Not specified';
+
+  @override
+  String get root_createProject_weeklyHoursNumberTitle => 'Hours per week';
+
+  @override
+  String get root_createProject_categoriesTitle => 'Categories';
+
+  @override
+  String get root_createProject_employmentTypeRemote => 'Remote';
+
+  @override
+  String get root_createProject_employmentTypeOnSiteWork => 'On site';
+
+  @override
+  String get root_createProject_employmentTypeExpeditions => 'Expedition';
+
+  @override
+  String get root_createProject_employmentTypeInternships => 'Internship';
+
+  @override
+  String get root_createProject_campusTypeMoscow => 'Moscow';
+
+  @override
+  String get root_createProject_campusTypeNizhniyNovgorod => 'Nizhniy Novgorod';
+
+  @override
+  String get root_createProject_campusTypePerm => 'Perm';
+
+  @override
+  String get root_createProject_campusTypeSaintPetersburg => 'Saint Petersburg';
+
+  @override
+  String get root_createProject_projectTypeResearch => 'Research';
+
+  @override
+  String get root_createProject_projectTypeApplication => 'Application';
+
+  @override
+  String get root_createProject_projectTypeService => 'Service';
 
   @override
   String get root_createProject_connectionErrorMessage => 'No internet connection';
@@ -223,49 +391,49 @@ class SEn extends S {
   String get root_profile_logoutButtonText => 'Logout';
 
   @override
-  String get root_profileEditing_connectionErrorMessage => 'No internet connection';
+  String get profileEditing_profileEditing_connectionErrorMessage => 'No internet connection';
 
   @override
-  String get root_profileEditing_undefinedErrorMessageTitle => 'Something went wrong';
+  String get profileEditing_profileEditing_undefinedErrorMessageTitle => 'Something went wrong';
 
   @override
-  String get root_profileEditing_undefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
+  String get profileEditing_profileEditing_undefinedErrorMessageSubtitle => 'Technical error, we are solving the issue';
 
   @override
-  String get root_profileEditing_tryAgainButtonText => 'Try again';
+  String get profileEditing_profileEditing_tryAgainButtonText => 'Try again';
 
   @override
-  String get root_profileEditing_emailTitle => 'E-mail';
+  String get profileEditing_profileEditing_emailTitle => 'E-mail';
 
   @override
-  String get root_profileEditing_emailInputHint => 'E-mail';
+  String get profileEditing_profileEditing_emailInputHint => 'E-mail';
 
   @override
-  String get root_profileEditing_fullNameTitle => 'Full name';
+  String get profileEditing_profileEditing_fullNameTitle => 'Full name';
 
   @override
-  String get root_profileEditing_fullNameInputHint => 'Full name';
+  String get profileEditing_profileEditing_fullNameInputHint => 'Full name';
 
   @override
-  String get root_profileEditing_facultyTitle => 'Faculty';
+  String get profileEditing_profileEditing_facultyTitle => 'Faculty';
 
   @override
-  String get root_profileEditing_facultyNotSetText => 'Not specified';
+  String get profileEditing_profileEditing_facultyNotSetText => 'Not specified';
 
   @override
-  String get root_profileEditing_bioTitle => 'About me';
+  String get profileEditing_profileEditing_bioTitle => 'About me';
 
   @override
-  String get root_profileEditing_bioNotSetText => 'Not specified';
+  String get profileEditing_profileEditing_bioNotSetText => 'Not specified';
 
   @override
-  String get root_profileEditing_categoriesTitle => 'Skills';
+  String get profileEditing_profileEditing_categoriesTitle => 'Skills';
 
   @override
-  String get root_profileEditing_categoriesInputHint => 'Start typing...';
+  String get profileEditing_profileEditing_submitButtonText => 'Save';
 
   @override
-  String get root_profileEditing_submitButtonText => 'Save';
+  String get categories_categories_categoriesInputHint => 'Start typing...';
 
   @override
   String get common_lists_loading_noItemsMessage => 'Nothing found';

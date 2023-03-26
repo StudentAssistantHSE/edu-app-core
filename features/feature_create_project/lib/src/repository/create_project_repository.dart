@@ -1,3 +1,4 @@
+import 'package:edu_models/edu_models.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:feature_create_project/src/repository/create_project_body_parameters.dart';
 import 'package:feature_create_project/src/repository/create_project_paths.dart';
@@ -14,16 +15,46 @@ class CreateProjectRepository {
     required String name,
     required String description,
     required String contacts,
+    required DateTime? startDateTime,
+    required DateTime? endDateTime,
+    required DateTime? applicationDeadline,
+    required EmploymentType? employmentType,
+    required String territory,
+    required String skills,
+    required int? creditNumber,
+    required CampusType? campus,
+    required int? participantsNumber,
+    required ProjectType? projectType,
+    required int? weeklyHours,
     required List<int> categories,
     required List<String> customCategories,
   }) async {
+    final project = ProjectModel(
+      id: -1,
+      name: name.trim(),
+      description: description.trim(),
+      contacts: contacts.trim(),
+      startDate: startDateTime,
+      endDate: endDateTime,
+      applicationDeadline: applicationDeadline,
+      employmentType: employmentType,
+      territory: territory.trim().isEmpty ? null : territory.trim(),
+      skills: skills.trim().isEmpty ? null : skills.trim(),
+      creditNumber: creditNumber,
+      campus: campus,
+      participantsNumber: participantsNumber,
+      projectType: projectType,
+      weeklyHours: weeklyHours,
+      isClosed: false,
+      userFullName: null,
+      categories: const [],
+    ).toJson();
+
     final response = await _networkRepository.sendApiRequest(
       CreateProjectPaths.create,
       Method.post,
       body: <String, dynamic> {
-        CreateProjectBodyParameters.name: name,
-        CreateProjectBodyParameters.description: description,
-        CreateProjectBodyParameters.contacts: contacts,
+        ...project..remove('id')..remove('isClosed')..remove('userFullName')..remove('categories'),
         CreateProjectBodyParameters.categories: categories,
         CreateProjectBodyParameters.customCategories: customCategories,
       },

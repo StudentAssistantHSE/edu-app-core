@@ -73,25 +73,22 @@ class _SelectionInputState<T> extends State<SelectionInput<T>> {
   Widget build(BuildContext context) {
     final disabled = widget.onChanged == null
         || widget.items.isEmpty && !_addNotSelected;
-    return InkWell(
-      onTap: disabled ? null : _showPicker,
-      canRequestFocus: false,
-      child: SizedBox(
-        child: IgnorePointer(
-          child: TextInput(
-            suffixType: widget.suffixType.isClear
-                && widget.selectedItem != null && _addNotSelected
-                ? TextInputSuffixType.clear : TextInputSuffixType.empty,
-            hint: widget.hint,
-            controller: _textEditingController,
-            onChanged: (value) => value.isEmpty
-                ? widget.onChanged?.call(null)
-                : null,
-            enabled: !disabled,
-            errorOccurred: widget.errorOccurred,
-          ),
+    return FocusScope(
+        canRequestFocus: false,
+        child: TextInput(
+          readOnly: true,
+          suffixType: widget.suffixType.isClear
+              && _addNotSelected
+              ? TextInputSuffixType.clear : TextInputSuffixType.empty,
+          hint: widget.hint,
+          controller: _textEditingController,
+          onChanged: (value) => value.isEmpty
+              ? widget.onChanged?.call(null)
+              : null,
+          enabled: !disabled,
+          onTap: _showPicker,
+          errorOccurred: widget.errorOccurred,
         ),
-      ),
     );
   }
 
