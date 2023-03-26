@@ -81,7 +81,10 @@
   "root_applyProject_connectionErrorMessage": "Отсутствует подключение к интернету",
   "root_applyProject_undefinedErrorMessage": "Что-то пошло не так",
 
-  "root_createProject_createButtonText": "Создать",
+  "root_processApplication_connectionErrorMessage": "Отсутствует подключение к интернету",
+  "root_processApplication_undefinedErrorMessage": "Что-то пошло не так",
+
+  "root_createProject_createButtonText": "Сохранить",
   "root_createProject_nameInputHint": "Название",
   "root_createProject_nameTitle": "Название",
   "root_createProject_descriptionInputHint": "Описание",

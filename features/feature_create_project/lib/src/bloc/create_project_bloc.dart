@@ -15,11 +15,14 @@ part 'create_project_state.dart';
 
 class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
   final CreateProjectRepository _createProjectRepository;
+  final int? _initialId;
 
   CreateProjectBloc({
     required CreateProjectRepository createProjectRepository,
+    ProjectModel? initialData,
   }) : _createProjectRepository = createProjectRepository,
-       super(const CreateProjectState.initial()) {
+       _initialId = initialData?.id,
+       super(initialData == null ? const CreateProjectState.initial() : CreateProjectState.editing(initialData)) {
     on<CreateProjectNameFieldChanged>(_onNameChanged);
     on<CreateProjectDescriptionFieldChanged>(_onDescriptionChanged);
     on<CreateProjectContactsFieldChanged>(_onContactsChanged);
@@ -174,6 +177,7 @@ class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
     emit(state.copyWith(status: CreateProjectStatus.inProgress));
     try {
       final result = await _createProjectRepository.create(
+        initialId: _initialId,
         name: state.name.value,
         description: state.description.value,
         contacts: state.contacts.value,

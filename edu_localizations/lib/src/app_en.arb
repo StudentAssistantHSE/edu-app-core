@@ -91,7 +91,10 @@
   "root_applyProject_connectionErrorMessage": "No internet connection",
   "root_applyProject_undefinedErrorMessage": "Something went wrong",
 
-  "root_createProject_createButtonText": "Create",
+  "root_processApplication_connectionErrorMessage": "No internet connection",
+  "root_processApplication_undefinedErrorMessage": "Something went wrong",
+
+  "root_createProject_createButtonText": "Save",
   "root_createProject_nameInputHint": "Name",
   "root_createProject_nameTitle": "Name",
   "root_createProject_descriptionInputHint": "Description",

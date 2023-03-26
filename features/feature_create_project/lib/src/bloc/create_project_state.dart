@@ -48,7 +48,6 @@ class CreateProjectState extends Equatable {
     projectType,
     weeklyHours,
     categories,
-    categories,
   ];
 
   const CreateProjectState._({
@@ -69,6 +68,30 @@ class CreateProjectState extends Equatable {
     required this.weeklyHours,
     required this.categories,
   });
+
+  CreateProjectState.editing(ProjectModel initialData) :
+      status = CreateProjectStatus.notSubmitted,
+      name = NameField.pure(initialData.name),
+      description = DescriptionField.pure(initialData.description),
+      contacts = ContactsField.pure(initialData.contacts ?? ''),
+      startDateTime = NotNullObjectWrapper(initialData.startDate),
+      endDateTime = NotNullObjectWrapper(initialData.endDate),
+      applicationDeadline = NotNullObjectWrapper(initialData.applicationDeadline),
+      employmentType = NotNullObjectWrapper(initialData.employmentType),
+      territory = TerritoryField.pure(initialData.territory ?? ''),
+      skills = SkillsField.pure(initialData.skills ?? ''),
+      creditNumber = NotNullObjectWrapper(initialData.creditNumber),
+      campus = NotNullObjectWrapper(initialData.campus),
+      participantsNumber = NotNullObjectWrapper(initialData.participantsNumber),
+      projectType = NotNullObjectWrapper(initialData.projectType),
+      weeklyHours = NotNullObjectWrapper(initialData.weeklyHours),
+      categories = [
+        for (final category in initialData.categories)
+          if (category.isCustom)
+            CustomCategory(category.category)
+          else
+            ExistingCategory(category.id, category.category),
+      ];
 
   const CreateProjectState.initial() :
       status = CreateProjectStatus.notSubmitted,

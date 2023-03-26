@@ -4,6 +4,7 @@ import 'package:edu_ui_components/src/icons/custom_icons.dart';
 import 'package:edu_ui_components/src/themes/edu_theme.dart';
 import 'package:edu_ui_components/src/widgets/app/categories_list.dart';
 import 'package:edu_ui_components/src/widgets/buttons/edu_gradient_button.dart';
+import 'package:edu_ui_components/src/widgets/buttons/edu_icon_button.dart';
 import 'package:edu_ui_components/src/widgets/containers/edu_card.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,11 +13,13 @@ class ProjectCard extends StatelessWidget {
   final S translations;
   final ProjectModel project;
   final VoidCallback? applyButtonCallback;
+  final VoidCallback? editButtonCallback;
 
   const ProjectCard({
     required this.translations,
     required this.project,
     this.applyButtonCallback,
+    this.editButtonCallback,
     Key? key,
   }) : super(key: key);
 
@@ -27,7 +30,7 @@ class ProjectCard extends StatelessWidget {
     final startDate = project.startDate;
     final endDate = project.endDate;
     return EduCard(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16).copyWith(top: editButtonCallback != null ? 8.0 : 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,6 +42,15 @@ class ProjectCard extends StatelessWidget {
               Expanded(
                 child: Text(project.userFullName ?? translations.root_projects_projectCard_recommendationsText, style: theme.textTheme.body),
               ),
+              if (editButtonCallback != null)
+                const SizedBox(width: 8),
+              if (editButtonCallback != null)
+                EduIconButton(
+                  iconSize: 20,
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(CustomIcons.pencil),
+                  onPressed: editButtonCallback,
+                ),
             ],
           ),
           if (project.contacts != null && project.contacts!.isNotEmpty)

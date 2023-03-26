@@ -12,6 +12,7 @@ class CreateProjectRepository {
   );
 
   Future<CreateProjectResult> create({
+    required int? initialId,
     required String name,
     required String description,
     required String contacts,
@@ -52,9 +53,11 @@ class CreateProjectRepository {
 
     final response = await _networkRepository.sendApiRequest(
       CreateProjectPaths.create,
-      Method.post,
+      initialId != null ? Method.patch : Method.post,
       body: <String, dynamic> {
         ...project..remove('id')..remove('isClosed')..remove('userFullName')..remove('categories'),
+        if (initialId != null)
+          CreateProjectBodyParameters.projectId: initialId,
         CreateProjectBodyParameters.categories: categories,
         CreateProjectBodyParameters.customCategories: customCategories,
       },

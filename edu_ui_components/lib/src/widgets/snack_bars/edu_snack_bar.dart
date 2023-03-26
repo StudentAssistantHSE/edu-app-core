@@ -1,4 +1,5 @@
 import 'package:edu_ui_components/src/icons/custom_icons.dart';
+import 'package:edu_ui_components/src/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 enum _EduSnackBarType {
@@ -41,7 +42,7 @@ class EduSnackBar extends StatelessWidget {
               child: Text(
                 message,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).snackBarTheme.contentTextStyle?.copyWith(color: foregroundColor),
+                style: EduTheme.of(context).textTheme.body.copyWith(color: foregroundColor),
               ),
             ),
             if (onTap != null)
@@ -76,8 +77,7 @@ class EduSnackBar extends StatelessWidget {
     String message, {
     _EduSnackBarType type = _EduSnackBarType.normal,
   }) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final theme = EduTheme.of(context);
 
     final Color backgroundColor;
     final Color foregroundColor;
@@ -85,15 +85,15 @@ class EduSnackBar extends StatelessWidget {
     final IconData? icon;
     switch (type) {
       case _EduSnackBarType.normal:
-        backgroundColor = colorScheme.surface;
-        foregroundColor = colorScheme.onSurface;
-        borderColor = colorScheme.primary;
+        backgroundColor = theme.colorScheme.themeMain;
+        foregroundColor = theme.colorScheme.primary500;
+        borderColor = theme.colorScheme.primary500;
         icon = null;
         break;
       case _EduSnackBarType.error:
-        backgroundColor = colorScheme.errorContainer;
-        foregroundColor = colorScheme.error;
-        borderColor = colorScheme.error;
+        backgroundColor = theme.colorScheme.error100;
+        foregroundColor = theme.colorScheme.error500;
+        borderColor = theme.colorScheme.error500;
         icon = CustomIcons.exclamation;
         break;
       case _EduSnackBarType.success:
