@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:equatable/equatable.dart';
@@ -27,7 +28,7 @@ class ProfileEditingBloc extends Bloc<ProfileEditingEvent, ProfileEditingState> 
     on<ProfileEditingExistingCategoryRemoved>(_onExistingCategoryRemoved);
     on<ProfileEditingCustomCategoryAdded>(_onCustomCategoryAdded);
     on<ProfileEditingCustomCategoryRemoved>(_onCustomCategoryRemoved);
-    on<ProfileEditingSubmitted>(_onSubmitted);
+    on<ProfileEditingSubmitted>(_onSubmitted, transformer: bloc_concurrency.droppable());
   }
 
   void _onEmailChanged(

@@ -13,8 +13,6 @@ dependencies:
 
   edu_core:
     path: ../../edu_core
-  edu_models:
-    path: ../../edu_models
   edu_repositories:
     path: ../../edu_repositories
 
