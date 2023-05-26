@@ -1,7 +1,5 @@
-import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_ui_components/src/widgets/inputs/text_input.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
 enum DateTimeInputSuffixType {
@@ -91,21 +89,45 @@ class _DateTimeInputState extends State<DateTimeInput> {
     }
   }
 
-  Future<void> _showPicker() async {
-    final result = await DatePicker.showDateTimePicker(
-      context,
-      minTime: widget.startDateTime,
-      maxTime: widget.endDateTime,
-      currentTime: widget.selected,
-      locale: S.of(context)?.localeName == 'ru'
-        ? LocaleType.ru
-        : LocaleType.en,
-    );
-
-    if (result == null) {
-      return;
+  Future<DateTime?> _selectDate(BuildContext context) async {
+    var initial = widget.selected ?? DateTime.now();
+    if (initial.isBefore(widget.startDateTime)) {
+      initial = widget.startDateTime;
     }
-
-    widget.onChanged?.call(result);
+    if (initial.isAfter(widget.endDateTime)) {
+      initial = widget.endDateTime;
+    }
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: widget.startDateTime,
+      lastDate: widget.endDateTime,
+    );
+    return selected;
   }
+
+  Future<TimeOfDay?> _selectTime(BuildContext context) async {
+    var initial = widget.selected ?? DateTime.now();
+    if (initial.isBefore(widget.startDateTime)) {
+      initial = widget.startDateTime;
+    }
+    if (initial.isAfter(widget.endDateTime)) {
+      initial = widget.endDateTime;
+    }
+    final selected = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: initial.hour, minute: initial.minute),
+    );
+    return selected;
+  }
+
+  Future<void> _showPicker() => _selectDate(context).then((date) async {
+    if (date != null) {
+      final time = await _selectTime(context);
+      if (time == null) {
+        return;
+      }
+      widget.onChanged?.call(DateTime(date.year, date.month, date.day, time.hour, time.minute));
+    }
+  });
 }
