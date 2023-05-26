@@ -10,13 +10,22 @@ environment:
 
 dependencies:
   edu_core:
-    path: ../edu_core
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: edu_core
+      ref: v0.0.1
   edu_services:
-    path: ../edu_services
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: edu_services
+      ref: v0.0.1
 
 dev_dependencies:
   build_runner: 2.3.3
   dependency_validator: 3.2.2
   json_serializable: 6.6.1
   lint_rules:
-    path: ../lint_rules
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: lint_rules
+      ref: v0.0.1

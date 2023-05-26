@@ -19,4 +19,7 @@ dev_dependencies:
   dependency_validator: 3.2.2
   json_serializable: 6.6.1
   lint_rules:
-    path: ../lint_rules
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: lint_rules
+      ref: v0.0.1
